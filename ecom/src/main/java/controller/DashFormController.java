@@ -1,4 +1,4 @@
-package project.controller;
+package controller;
 
 public class DashFormController {
 }

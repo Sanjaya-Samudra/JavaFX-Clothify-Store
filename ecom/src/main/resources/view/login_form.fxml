@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="340.0" prefWidth="531.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="271.0" fitWidth="531.0" layoutY="69.0" opacity="0.3" pickOnBounds="true">
+         <image>
+            <Image url="@../../../images/login-background.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="169.0" layoutX="206.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/login.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtUserEmail" layoutX="129.0" layoutY="180.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="273.0" promptText="User Email">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXButton layoutX="129.0" layoutY="290.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#btnClickOnActionUserLogin" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: #0693e3;" text="User Login" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="274.0" layoutY="290.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#btnClickOnActionAdminLogin" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: #00d084;" text="Admin Login">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXPasswordField fx:id="txtUserPassword" layoutX="129.0" layoutY="223.0" prefHeight="25.0" prefWidth="273.0" promptText="User Password" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="531.0" />
+      <Label layoutX="160.0" layoutY="13.0" text="LOGIN FORM" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="129.0" layoutY="260.0" onMouseClicked="#fogotPasswordOnAction" text="Fogot Password?">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label layoutX="266.0" layoutY="260.0" onMouseClicked="#createAccountOnAction" text="Create New Account">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+   </children>
+</AnchorPane>
