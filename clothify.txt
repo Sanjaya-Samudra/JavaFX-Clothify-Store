@@ -1,0 +1,11 @@
+CREATE TABLE Item(
+	ItemID VARCHAR(6) NOT NULL,
+	ItemName VARCHAR(50) NOT NULL,
+	ItemSize VARCHAR(20),
+	ItemPrice DECIMAL(6,2) NOT NULL,
+	ItemQuantity INT(5) NOT NULL,
+	ItemCategory VARCHAR(10),
+	ItemStock INT(10),
+	ItemSupplierName VARCHAR(20) NOT NULL,
+	CONSTRAINT PRIMARY KEY (ItemID)
+);
