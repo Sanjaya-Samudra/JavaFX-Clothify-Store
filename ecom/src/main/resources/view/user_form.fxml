@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.LoginFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="474.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="66.0" stroke="#0055ff" strokeType="INSIDE" width="672.0" />
+      <Label layoutX="159.0" layoutY="11.0" text="Product Management" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Bold" size="36.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="43.0" layoutY="100.0" promptText="ID" />
+      <JFXTextField layoutX="208.0" layoutY="100.0" promptText="Name" />
+      <JFXTextField layoutX="370.0" layoutY="100.0" promptText="Price" />
+      <JFXTextField layoutX="45.0" layoutY="148.0" promptText="Size" />
+      <JFXTextField layoutX="210.0" layoutY="148.0" promptText="Quantity" />
+      <JFXTextField layoutX="372.0" layoutY="148.0" promptText="Stock" />
+      <JFXComboBox layoutX="532.0" layoutY="100.0" prefHeight="25.0" prefWidth="103.0" promptText="Category" />
+      <JFXComboBox layoutX="532.0" layoutY="148.0" prefHeight="25.0" prefWidth="103.0" promptText="Supplier Name" />
+      <TableView layoutX="24.0" layoutY="250.0" prefHeight="200.0" prefWidth="628.0" stylesheets="@../css/table.css">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="Name" />
+            <TableColumn prefWidth="75.0" text="Price" />
+            <TableColumn prefWidth="75.0" text="Size" />
+            <TableColumn prefWidth="75.0" text="Quantity" />
+            <TableColumn prefWidth="75.0" text="Stock" />
+            <TableColumn prefWidth="75.0" text="Category" />
+            <TableColumn prefWidth="102.0" text="Supplier Name" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="554.0" layoutY="200.0" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: #00ff80;" text="ADD">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="453.0" layoutY="200.0" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: #fa28ff;" text="UPDATE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton layoutX="352.0" layoutY="200.0" prefHeight="31.0" prefWidth="79.0" style="-fx-background-color: #fcb900;" text="REMOVE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
 </AnchorPane>
