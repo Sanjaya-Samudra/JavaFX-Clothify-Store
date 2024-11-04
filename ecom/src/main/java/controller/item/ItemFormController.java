@@ -3,9 +3,13 @@ package controller.item;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,28 +22,64 @@ import static sun.net.www.MimeTable.loadTable;
 public class ItemFormController implements Initializable {
 
 
-    public JFXTextField txtId;
-    public JFXTextField txtName;
-    public JFXTextField txtPrice;
-    public JFXComboBox cmbItemCategory;
-    public JFXComboBox cmbItemSupplierName;
-    public TableColumn colId;
-    public TableColumn colName;
-    public TableColumn colPrice;
-    public TableColumn colSize;
-    public TableColumn colQuantity;
-    public TableColumn colStock;
-    public TableColumn colCategory;
-    public TableColumn colSupplierName;
-    public TableView tblItems;
-    public JFXTextField txtSize;
-    public JFXTextField txtQuantity;
-    public JFXTextField txtStock;
+    @FXML
+    private JFXTextField txtId;
+
+    @FXML
+    private JFXTextField txtName;
+
+    @FXML
+    private JFXTextField txtPrice;
+
+    @FXML
+    private ComboBox<String> cmbItemCategory;
+
+    @FXML
+    private ComboBox<String> cmbItemSupplierName;
+
+    @FXML
+    private TableColumn<?, ?> colId;
+
+    @FXML
+    private TableColumn<?, ?> colName;
+
+    @FXML
+    private TableColumn<?, ?> colPrice;
+
+    @FXML
+    private TableColumn<?, ?> colSize;
+
+    @FXML
+    private TableColumn<?, ?> colQuantity;
+
+    @FXML
+    private TableColumn<?, ?> colStock;
+
+    @FXML
+    private TableColumn<?, ?> colCategory;
+
+    @FXML
+    private TableColumn<?, ?> colSupplierName;
+
+    @FXML
+    private TableView<Item> tblItems;
+
+    @FXML
+    private JFXTextField txtSize;
+
+    @FXML
+    private JFXTextField txtQuantity;
+
+    @FXML
+    private JFXTextField txtStock;
 
     ItemService service = ItemController.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        loadCategory();
+        loadSuplierName();
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("size"));
@@ -58,13 +98,35 @@ public class ItemFormController implements Initializable {
         loadTable();
     }
 
-    private void addValueToText(Object newVal) {
-        txtId.setText(newVal.getItemCode());
-        txtName.setText(newVal.getDescription());
-        txtSize.setText(newVal.getPackSize());
-        txtPrice.setText(newVal.getUnitPrice().toString());
-        txtQuantity.setText(newVal.getQty().toString());
-        txtStock.setText(newVal.getQty().toString());
+    private void addValueToText(Item newVal) {
+        txtId.setText(newVal.getId());
+        txtName.setText(newVal.getName());
+        txtSize.setText(newVal.getSize());
+        txtPrice.setText(newVal.getPrice().toString());
+        txtQuantity.setText(newVal.getQuantity().toString());
+        txtStock.setText(newVal.getStock().toString());
+    }
+
+    private void loadCategory() {
+        ObservableList<String> categoryList = FXCollections.observableArrayList();
+        ObservableList<Item> allItems = ItemController.getInstance().getAllItems();
+
+        allItems.forEach(obj->{
+            categoryList.add(obj.getId());
+        });
+
+        cmbItemCategory.setItems(categoryList);
+    }
+
+    private void loadSuplierName() {
+        ObservableList<String> supplierNameList = FXCollections.observableArrayList();
+        ObservableList<Item> allItems = ItemController.getInstance().getAllItems();
+
+        allItems.forEach(obj->{
+            supplierNameList.add(obj.getId());
+        });
+
+        cmbItemSupplierName.setItems(supplierNameList);
     }
 
     public void btnOnActionAdd(ActionEvent actionEvent) {
@@ -77,7 +139,9 @@ public class ItemFormController implements Initializable {
                                 txtSize.getText(),
                                 Double.parseDouble(txtPrice.getText()),
                                 Integer.parseInt(txtQuantity.getText()),
-                                cmbItemCategory.get
+                                cmbItemCategory.getValue().toString(),
+                                Integer.parseInt(txtStock.getText()),
+                                cmbItemSupplierName.getValue().toString()
                         )
                 )
         ) {
