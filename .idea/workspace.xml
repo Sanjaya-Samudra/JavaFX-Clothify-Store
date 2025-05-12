@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="30928eb8-11e2-4242-a08e-fb4ee99ea0e4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/ecom/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/images/login-background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/images/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/Starter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/controller/LoginFormController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/controller/item/ItemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/controller/item/ItemFormController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/controller/item/ItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/db/DBConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/dto/Item.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/dto/OrderDetail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/entity/ProductEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/java/util/CrudUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/resources/css/table.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/resources/view/admin_form.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/resources/view/login_form.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom/src/main/resources/view/user_form.fxml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2nbGy2UVhM5CrWhXoa8sG7XQree" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Starter.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/Sanjaya/ICM108/Standalone Development/Day09/clothify",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Starter" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="22" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Starter" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Day09" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Day09" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30928eb8-11e2-4242-a08e-fb4ee99ea0e4" name="Changes" comment="" />
+      <created>1729234613176</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729234613176</updated>
+    </task>
+    <servers />
+  </component>
+</project>

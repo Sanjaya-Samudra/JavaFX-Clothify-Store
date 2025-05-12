@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-position-shape: arc-button;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardFormController">
+   <children>
+      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="131.0" layoutY="118.0" rotate="-58.0" text="User Management">
+         <font>
+            <Font name="Bodoni MT Bold" size="13.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="361.0" layoutY="127.0" rotate="58.0" text="Product Management">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="129.0" layoutY="249.0" rotate="60.9" text="Supplier Management" textAlignment="CENTER">
+         <font>
+            <Font name="Bodoni MT Bold" size="12.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="363.0" layoutY="253.0" rotate="-54.5" text="Employee Management" textAlignment="CENTER">
+         <font>
+            <Font name="Bodoni MT Bold" size="11.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="249.0" layoutY="55.0" text="Order Management">
+         <font>
+            <Font name="Bodoni MT Bold" size="13.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="277.0" layoutY="320.0" text=" Reports">
+         <font>
+            <Font name="Bodoni MT Bold" size="13.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <StackPane layoutX="200.0" layoutY="94.0">
+         <children>
+            <Circle opacity="0.08" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <ImageView blendMode="DARKEN" fitHeight="200.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/myLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+      <VBox layoutX="378.0" layoutY="100.0" />
+      <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="136.0" layoutY="58.0" prefHeight="128.0" prefWidth="103.0" styleClass="fourth-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="223.0" layoutY="28.0" prefHeight="68.0" prefWidth="154.0" styleClass="fifth-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="135.0" layoutY="194.0" prefHeight="141.0" prefWidth="103.0" styleClass="third-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="361.0" layoutY="59.0" prefHeight="135.0" prefWidth="103.0" styleClass="sixth-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="222.0" layoutY="292.0" prefHeight="75.0" prefWidth="154.0" styleClass="second-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="360.0" layoutY="202.0" prefHeight="128.0" prefWidth="103.0" styleClass="first-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

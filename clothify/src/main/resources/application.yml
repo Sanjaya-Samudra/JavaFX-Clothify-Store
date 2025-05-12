@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/clothify
+    username: root
+    password: 2003
+
+  jpa:
+    hibernate:
+      ddl-auto: create

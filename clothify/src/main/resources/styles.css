@@ -1,0 +1,24 @@
+.first-button{
+	-fx-shape: "M150,0 A150,150 0 0,1 75,129.9 L50,86.6 A100,100 0 0,0 100,0 Z";
+	-fx-background-color: orange;
+}
+.second-button{
+	-fx-shape: "M75,129.9 A150,150 0 0,1 -75,129.9 L-50,86.6 A100,100 0 0,0 50,86.6 Z";
+	-fx-background-color: orange;
+}
+.third-button{
+	-fx-shape: "M-75,129.9 A150,150 0 0,1 -150,0 L-100,0 A100,100 0 0,0 -50,86.6 Z";
+	-fx-background-color: orange;
+}
+.fourth-button{
+	-fx-shape: "M-150,0 A150,150 0 0,1 -75,-129.9 L-50,-86.6 A100,100 0 0,0 -100,0 Z";
+	-fx-background-color: orange;
+}
+.fifth-button{
+	-fx-shape: "M-75,-129.9 A150,150 0 0,1 75,-129.9 L50,-86.6 A100,100 0 0,0 -50,-86.6 Z";
+	-fx-background-color: orange;
+}
+.sixth-button{
+	-fx-shape: "M75,-129.9 A150,150 0 0,1 150,0 L100,0 A100,100 0 0,0 50,-86.6 Z";
+	-fx-background-color: orange;
+}

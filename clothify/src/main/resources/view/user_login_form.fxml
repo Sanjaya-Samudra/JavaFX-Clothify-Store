@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="429.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.UserLoginFormController">
+   <children>
+      <ImageView fitHeight="125.0" fitWidth="103.0" layoutX="160.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/myLogo.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fx:id="loginImage" fitHeight="242.0" fitWidth="367.0" layoutX="39.0" layoutY="29.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/login.png" />
+         </image></ImageView>
+      <ImageView fitHeight="446.0" fitWidth="436.0" layoutX="-7.0" layoutY="-76.0" opacity="0.29" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/loginBackground.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="email" layoutX="75.0" layoutY="134.0" prefHeight="31.0" prefWidth="279.0" promptText="Enter your email">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="password" layoutX="75.0" layoutY="184.0" prefHeight="31.0" prefWidth="279.0" promptText="Enter your password">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXCheckBox fx:id="forgotPassword" layoutX="75.0" layoutY="237.0" text="Fogot Password?">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXCheckBox>
+      <JFXButton layoutX="74.0" layoutY="281.0" onAction="#btnLoginOnAction" prefHeight="38.0" prefWidth="279.0" text="Login In" />
+   </children>
+</Pane>
