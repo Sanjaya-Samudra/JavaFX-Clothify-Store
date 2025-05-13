@@ -60,6 +60,7 @@ public class UserController implements UserService{
             ResultSet rs = psTm.executeQuery();
             return rs.next(); // returns true if a user is found
 
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

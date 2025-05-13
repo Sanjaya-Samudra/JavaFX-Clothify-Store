@@ -22,3 +22,10 @@
 	-fx-shape: "M75,-129.9 A150,150 0 0,1 150,0 L100,0 A100,100 0 0,0 50,-86.6 Z";
 	-fx-background-color: orange;
 }
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #ff4b2b, #ff416c);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 10, 0.3, 0, 6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
