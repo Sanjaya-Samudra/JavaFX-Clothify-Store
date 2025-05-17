@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="430.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.item.ItemFormController">
+   <children>
+      <Rectangle arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+      <Label layoutX="68.0" layoutY="-2.0" prefHeight="69.0" prefWidth="465.0" text="Product Management">
+         <font>
+            <Font name="Georgia" size="47.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbCategory" layoutX="20.0" layoutY="76.0" prefHeight="25.0" prefWidth="135.0" promptText="Category" />
+      <JFXTextField fx:id="txtItemCode" layoutX="20.0" layoutY="113.0" promptText="Item Code" />
+      <JFXTextField fx:id="txtName" layoutX="20.0" layoutY="151.0" promptText="Item Name" />
+      <JFXTextField fx:id="txtSize" layoutX="20.0" layoutY="189.0" promptText="Item Size" />
+      <JFXTextField fx:id="txtPrice" layoutX="178.0" layoutY="76.0" promptText="Item Price" />
+      <JFXTextField fx:id="txtQuantity" layoutX="178.0" layoutY="113.0" promptText="Item Quantity" />
+      <JFXTextField fx:id="txtSupplier" layoutX="178.0" layoutY="151.0" promptText="Item Supplier" />
+      <TableView layoutX="21.0" layoutY="234.0" prefHeight="168.0" prefWidth="559.0">
+        <columns>
+          <TableColumn prefWidth="53.0" text="ID" />
+          <TableColumn prefWidth="72.0" text="Item Code" />
+            <TableColumn prefWidth="121.0" text="Name" />
+            <TableColumn prefWidth="48.0" text="Size" />
+            <TableColumn prefWidth="73.0" text="Price" />
+            <TableColumn prefWidth="65.0" text="Quantity" />
+            <TableColumn prefWidth="126.0" text="Supplier" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="itemImage" fitHeight="144.0" fitWidth="150.0" layoutX="327.0" layoutY="76.0" pickOnBounds="true" />
+      <JFXButton layoutX="495.0" layoutY="106.0" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="UPDATE" />
+      <JFXButton layoutX="495.0" layoutY="75.0" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="ADD" />
+      <JFXButton layoutX="495.0" layoutY="137.0" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="DELETE" />
+      <JFXButton layoutX="495.0" layoutY="168.0" onAction="#btnSearchOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="SEARCH" />
+      <JFXButton layoutX="495.0" layoutY="200.0" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="CLEAR" />
+      <TextField fx:id="imageName" editable="false" layoutX="171.0" layoutY="193.0" prefHeight="25.0" prefWidth="86.0" promptText="Upload a image">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <JFXButton layoutX="261.0" layoutY="193.0" onAction="#btnBrowseOnAction" style="-fx-background-color: white;" text="Browse" />
+   </children>
+</AnchorPane>
