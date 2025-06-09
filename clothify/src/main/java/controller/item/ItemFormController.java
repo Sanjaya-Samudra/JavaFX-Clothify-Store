@@ -17,7 +17,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import model.Item;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -113,7 +115,22 @@ public class ItemFormController implements Initializable {
         txtSize.setText(newVal.getSize());
         cmbCategory.setValue(newVal.getCategory());
         txtSupplier.setText(newVal.getSupplier());
-        imageName.setText(newVal.getImage().toString());
+
+        byte[] imageBytes = newVal.getImage();
+        if (imageBytes != null && imageBytes.length > 0) {
+            try {
+                InputStream is = new ByteArrayInputStream(imageBytes);
+                Image image = new Image(is);
+                itemImage.setImage(image);
+                imageName.setText("Image loaded from DB");
+            } catch (Exception e) {
+                e.printStackTrace();
+                imageName.setText("Failed to load image");
+            }
+        } else {
+            itemImage.setImage(null);
+            imageName.setText("No image found");
+        }
     }
 
     private void loadTable() {
@@ -182,12 +199,37 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
-
+        Item item = service.searchItem(txtItemCode.getText());
+        txtName.setText(item.getName());
+        txtSize.setText(item.getSize());
+        txtPrice.setText(item.getPrice().toString());
+        txtQuantity.setText(item.getQuantity().toString());
+        cmbCategory.setValue(item.getCategory());
+        txtSupplier.setText(item.getSupplier());
+        imageName.setText(item.getImage().toString());
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
-
+        if (
+                service.updateItem(
+                        new Item(
+                                txtItemCode.getText(),
+                                txtName.getText(),
+                                txtSize.getText(),
+                                Double.parseDouble(txtPrice.getText()),
+                                Integer.parseInt(txtQuantity.getText()),
+                                cmbCategory.getValue(),
+                                txtSupplier.getText(),
+                                imageName.getText().getBytes()
+                        )
+                )
+        ) {
+            new Alert(Alert.AlertType.INFORMATION, "Item Updated!").show();
+            loadTable();
+        } else {
+            new Alert(Alert.AlertType.INFORMATION, "Item Not Updated!").show();
+        }
     }
 
 }

@@ -9,3 +9,14 @@ CREATE TABLE Item(
 	ItemSupplierName VARCHAR(20) NOT NULL,
 	CONSTRAINT PRIMARY KEY (ItemID)
 );
+
+CREATE TABLE item (
+    item_code VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    size VARCHAR(50),
+    price DECIMAL(10, 2),
+    quantity INT,
+    category VARCHAR(50),
+    supplier VARCHAR(100),
+    image BLOB
+);
