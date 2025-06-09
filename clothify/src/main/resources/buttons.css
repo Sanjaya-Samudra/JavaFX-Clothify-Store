@@ -1,0 +1,98 @@
+.add-button {
+    -fx-background-color: linear-gradient(to right, #43e97b, #38f9d7);
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 8 10;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.1, 0, 2);
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+.add-button:hover {
+    -fx-background-color: linear-gradient(to right, #38f9d7, #43e97b);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0.2, 0, 4);
+}
+
+.update-button {
+    -fx-background-color: linear-gradient(to right, #56ccf2, #2f80ed);
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 8 10;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.1, 0, 2);
+    -fx-cursor: hand;
+}
+.update-button:hover {
+    -fx-background-color: linear-gradient(to right, #2f80ed, #56ccf2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 7, 0.2, 0, 4);
+}
+
+.delete-button {
+    -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 8 10;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0.2, 0, 3);
+    -fx-cursor: hand;
+}
+.delete-button:hover {
+    -fx-background-color: linear-gradient(to right, #ff4b2b, #ff416c);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.3, 0, 5);
+}
+
+.search-button {
+    -fx-background-color: linear-gradient(to right, #00c9ff, #92fe9d);
+    -fx-text-fill: black;
+    -fx-background-radius: 10;
+    -fx-padding: 8 10;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.1, 0, 2);
+    -fx-cursor: hand;
+}
+.search-button:hover {
+    -fx-background-color: linear-gradient(to right, #92fe9d, #00c9ff);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 7, 0.2, 0, 4);
+}
+
+.clear-button {
+    -fx-background-color: linear-gradient(to right, #f7971e, #ffd200);
+    -fx-text-fill: black;
+    -fx-background-radius: 10;
+    -fx-padding: 8 10;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.1, 0, 2);
+    -fx-cursor: hand;
+}
+.clear-button:hover {
+    -fx-background-color: linear-gradient(to right, #ffd200, #f7971e);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0.2, 0, 3);
+}
+
+.cool-button {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-transition: all 0.3s ease;
+}
+
+.browse-button {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #333;
+    -fx-font-weight: 600;
+    -fx-font-size: 13px;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 3, 0.1, 0, 1);
+    -fx-transition: all 0.3s ease;
+}
+
+.browse-button:hover {
+    -fx-background-color: #eaeaea;
+    -fx-border-color: #c0c0c0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0.2, 0, 2);
+}
+

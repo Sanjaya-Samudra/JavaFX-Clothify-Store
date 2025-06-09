@@ -1,9 +1,13 @@
 package controller.item;
 
 import controller.util.CrudUtil;
+import db.DBConnection;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Item;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ItemController implements ItemService{
@@ -17,7 +21,8 @@ public class ItemController implements ItemService{
 
     @Override
     public boolean addItem(Item item) {
-        String SQL = "INSERT INTO Item values(?,?,?,?,?,?,?)";
+        System.out.println("ADD Button Clicked");
+        String SQL = "INSERT INTO Item values(?,?,?,?,?,?,?,?)";
         try {
             Object execute = CrudUtil.execute(SQL,
                     item.getItemCode(),
@@ -25,6 +30,7 @@ public class ItemController implements ItemService{
                     item.getSize(),
                     item.getPrice(),
                     item.getQuantity(),
+                    item.getCategory(),
                     item.getSupplier(),
                     item.getImage()
             );
@@ -38,7 +44,28 @@ public class ItemController implements ItemService{
 
     @Override
     public ObservableList<Item> getAllItems() {
-        return null;
+        ObservableList<Item> itemObservableList = FXCollections.observableArrayList();
+        String SQL = "SELECT * FROM Item";
+
+        try {
+            ResultSet resultSet = CrudUtil.execute(SQL);
+
+            while (resultSet.next()){
+                itemObservableList.add(new Item(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDouble(4),
+                        resultSet.getInt(5),
+                        resultSet.getString(6),
+                        resultSet.getString(7),
+                        resultSet.getBytes(8)
+                ));
+            }
+            return itemObservableList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -47,8 +74,13 @@ public class ItemController implements ItemService{
     }
 
     @Override
-    public boolean deleteItem(String id) {
-        return false;
+    public boolean deleteItem(String itemCode) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            return connection.createStatement().executeUpdate("DELETE FROM Item WHERE ItemCode ='" + itemCode + "'") > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

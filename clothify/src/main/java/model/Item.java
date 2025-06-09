@@ -15,6 +15,7 @@ public class Item {
     private String size;
     private Double price;
     private Integer quantity;
+    private String category;
     private String supplier;
     private byte[] image;
 }

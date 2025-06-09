@@ -1,0 +1,20 @@
+.text-field, .password-field, .text-area {
+    -fx-background-color: white;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+    -fx-font-size: 13px;
+    -fx-text-fill: #333;
+    -fx-prompt-text-fill: #999;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Smooth border color on focus */
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: #4facfe;
+    -fx-background-color: #fff;
+    -fx-text-fill: #222;
+}

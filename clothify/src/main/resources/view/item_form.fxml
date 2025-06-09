@@ -7,49 +7,57 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="430.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.item.ItemFormController">
+<AnchorPane prefHeight="450.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.item.ItemFormController">
    <children>
-      <Rectangle arcWidth="5.0" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
-      <Label layoutX="68.0" layoutY="-2.0" prefHeight="69.0" prefWidth="465.0" text="Product Management">
-         <font>
-            <Font name="Georgia" size="47.0" />
-         </font>
-      </Label>
-      <JFXComboBox fx:id="cmbCategory" layoutX="20.0" layoutY="76.0" prefHeight="25.0" prefWidth="135.0" promptText="Category" />
-      <JFXTextField fx:id="txtItemCode" layoutX="20.0" layoutY="113.0" promptText="Item Code" />
-      <JFXTextField fx:id="txtName" layoutX="20.0" layoutY="151.0" promptText="Item Name" />
-      <JFXTextField fx:id="txtSize" layoutX="20.0" layoutY="189.0" promptText="Item Size" />
-      <JFXTextField fx:id="txtPrice" layoutX="178.0" layoutY="76.0" promptText="Item Price" />
-      <JFXTextField fx:id="txtQuantity" layoutX="178.0" layoutY="113.0" promptText="Item Quantity" />
-      <JFXTextField fx:id="txtSupplier" layoutX="178.0" layoutY="151.0" promptText="Item Supplier" />
-      <TableView layoutX="21.0" layoutY="234.0" prefHeight="168.0" prefWidth="559.0">
+      <JFXComboBox fx:id="cmbCategory" layoutX="20.0" layoutY="82.0" prefHeight="25.0" prefWidth="135.0" promptText="Category" />
+      <JFXTextField fx:id="txtItemCode" layoutX="20.0" layoutY="122.0" promptText="Item Code" />
+      <JFXTextField fx:id="txtName" layoutX="20.0" layoutY="162.0" promptText="Item Name" />
+      <JFXTextField fx:id="txtSize" layoutX="20.0" layoutY="201.0" promptText="Item Size" />
+      <JFXTextField fx:id="txtPrice" layoutX="178.0" layoutY="82.0" promptText="Item Price" />
+      <JFXTextField fx:id="txtQuantity" layoutX="178.0" layoutY="122.0" promptText="Item Quantity" />
+      <JFXTextField fx:id="txtSupplier" layoutX="178.0" layoutY="162.0" promptText="Item Supplier" />
+      <TableView fx:id="tblItems" layoutX="20.0" layoutY="246.0" prefHeight="189.0" prefWidth="668.0" stylesheets="@../table.css">
         <columns>
-          <TableColumn prefWidth="53.0" text="ID" />
-          <TableColumn prefWidth="72.0" text="Item Code" />
-            <TableColumn prefWidth="121.0" text="Name" />
-            <TableColumn prefWidth="48.0" text="Size" />
-            <TableColumn prefWidth="73.0" text="Price" />
-            <TableColumn prefWidth="65.0" text="Quantity" />
-            <TableColumn prefWidth="126.0" text="Supplier" />
+          <TableColumn fx:id="colItemCode" prefWidth="85.0" text="Item Code" />
+            <TableColumn fx:id="colName" prefWidth="109.0" text="Name" />
+            <TableColumn fx:id="colSize" prefWidth="46.0" text="Size" />
+            <TableColumn fx:id="colPrice" prefWidth="77.0" text="Price" />
+            <TableColumn fx:id="colQuantity" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="colCategory" prefWidth="81.0" text="Category" />
+            <TableColumn fx:id="colSupplier" prefWidth="120.0" text="Supplier" />
+          <TableColumn fx:id="colImage" prefWidth="62.0" text="Image" />
         </columns>
       </TableView>
-      <ImageView fx:id="itemImage" fitHeight="144.0" fitWidth="150.0" layoutX="327.0" layoutY="76.0" pickOnBounds="true" />
-      <JFXButton layoutX="495.0" layoutY="106.0" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="UPDATE" />
-      <JFXButton layoutX="495.0" layoutY="75.0" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="ADD" />
-      <JFXButton layoutX="495.0" layoutY="137.0" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="DELETE" />
-      <JFXButton layoutX="495.0" layoutY="168.0" onAction="#btnSearchOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="SEARCH" />
-      <JFXButton layoutX="495.0" layoutY="200.0" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" style="-fx-border-color: blue; -fx-border-radius: 5px;" text="CLEAR" />
-      <TextField fx:id="imageName" editable="false" layoutX="171.0" layoutY="193.0" prefHeight="25.0" prefWidth="86.0" promptText="Upload a image">
+      <ImageView fx:id="itemImage" fitHeight="157.0" fitWidth="244.0" layoutX="327.0" layoutY="77.0" pickOnBounds="true" />
+      <JFXButton layoutX="593.0" layoutY="106.0" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="update-button" stylesheets="@../buttons.css" text="UPDATE" />
+      <JFXButton layoutX="593.0" layoutY="73.0" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="add-button" stylesheets="@../buttons.css" text="ADD" />
+      <JFXButton layoutX="593.0" layoutY="138.0" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="delete-button" stylesheets="@../buttons.css" text="DELETE" />
+      <JFXButton layoutX="593.0" layoutY="169.0" onAction="#btnSearchOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="search-button" stylesheets="@../buttons.css" text="SEARCH" />
+      <JFXButton layoutX="593.0" layoutY="201.0" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="clear-button" stylesheets="@../buttons.css" text="CLEAR" />
+      <TextField fx:id="imageName" editable="false" layoutX="171.0" layoutY="205.0" prefHeight="25.0" prefWidth="86.0" promptText="Upload a image">
          <font>
             <Font size="10.0" />
          </font>
       </TextField>
-      <JFXButton layoutX="261.0" layoutY="193.0" onAction="#btnBrowseOnAction" style="-fx-background-color: white;" text="Browse" />
+      <JFXButton layoutX="261.0" layoutY="205.0" onAction="#btnBrowseOnAction" style="-fx-background-color: white;" text="Browse" />
+      <Rectangle arcWidth="5.0" blendMode="MULTIPLY" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="707.0" />
+      <Label layoutX="113.0" layoutY="6.0" prefHeight="55.0" prefWidth="494.0" text="Product    Management">
+         <font>
+            <Font name="Georgia" size="47.0" />
+         </font>
+      </Label>
+      <Circle blendMode="ADD" fill="WHITE" layoutX="301.0" layoutY="34.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <ImageView blendMode="MULTIPLY" fitHeight="44.0" fitWidth="44.0" layoutX="279.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/clothify-logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
