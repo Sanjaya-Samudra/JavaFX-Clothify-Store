@@ -1,0 +1,17 @@
+# ==============================================================================
+# Clothify Store - Haute Couture POS & ERP System
+# Production Database Configuration Template
+# ==============================================================================
+# Copy this file to 'config/database.properties' or define environment variables:
+#   DB_URL, DB_USER, DB_PASSWORD
+#
+# Precedence order:
+#   1. System Properties (-Ddb.url=..., -Ddb.user=..., -Ddb.password=...)
+#   2. Environment Variables (DB_URL, DB_USER, DB_PASSWORD)
+#   3. config/database.properties file
+#   4. Built-in local development defaults (localhost:3306/clothify, root/2003)
+# ==============================================================================
+
+db.url=jdbc:mysql://localhost:3306/clothify?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+db.user=root
+db.password=2003

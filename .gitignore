@@ -1,0 +1,44 @@
+# Maven
+target/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+.cp.txt
+cp.txt
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Runtime Generated Files & Data
+data/
+receipts/
+*.log
+config/database.properties
+!config/database.properties.example
+
+# OS Generated
+Thumbs.db
+ehthumbs.db
+.DS_Store
