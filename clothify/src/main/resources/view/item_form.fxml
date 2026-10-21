@@ -3,6 +3,9 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,54 +13,224 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.item.ItemFormController">
+<AnchorPane prefHeight="640.0" prefWidth="960.0" style="-fx-background-color: #f8fafc;" stylesheets="@../buttons.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.item.ItemFormController">
    <children>
-      <JFXComboBox fx:id="cmbCategory" layoutX="20.0" layoutY="82.0" prefHeight="25.0" prefWidth="135.0" promptText="Category" />
-      <JFXTextField fx:id="txtItemCode" layoutX="20.0" layoutY="122.0" promptText="Item Code" />
-      <JFXTextField fx:id="txtName" layoutX="20.0" layoutY="162.0" promptText="Item Name" />
-      <JFXTextField fx:id="txtSize" layoutX="20.0" layoutY="201.0" promptText="Item Size" />
-      <JFXTextField fx:id="txtPrice" layoutX="178.0" layoutY="82.0" promptText="Item Price" />
-      <JFXTextField fx:id="txtQuantity" layoutX="178.0" layoutY="122.0" promptText="Item Quantity" />
-      <JFXTextField fx:id="txtSupplier" layoutX="178.0" layoutY="162.0" promptText="Item Supplier" />
-      <TableView fx:id="tblItems" layoutX="20.0" layoutY="246.0" prefHeight="189.0" prefWidth="668.0" stylesheets="@../table.css">
-        <columns>
-          <TableColumn fx:id="colItemCode" prefWidth="85.0" text="Item Code" />
-            <TableColumn fx:id="colName" prefWidth="109.0" text="Name" />
-            <TableColumn fx:id="colSize" prefWidth="46.0" text="Size" />
-            <TableColumn fx:id="colPrice" prefWidth="77.0" text="Price" />
-            <TableColumn fx:id="colQuantity" prefWidth="75.0" text="Quantity" />
-            <TableColumn fx:id="colCategory" prefWidth="81.0" text="Category" />
-            <TableColumn fx:id="colSupplier" prefWidth="120.0" text="Supplier" />
-          <TableColumn fx:id="colImage" prefWidth="62.0" text="Image" />
-        </columns>
-      </TableView>
-      <ImageView fx:id="itemImage" fitHeight="157.0" fitWidth="244.0" layoutX="327.0" layoutY="77.0" pickOnBounds="true" />
-      <JFXButton layoutX="593.0" layoutY="106.0" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="update-button" stylesheets="@../buttons.css" text="UPDATE" />
-      <JFXButton layoutX="593.0" layoutY="73.0" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="add-button" stylesheets="@../buttons.css" text="ADD" />
-      <JFXButton layoutX="593.0" layoutY="138.0" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="delete-button" stylesheets="@../buttons.css" text="DELETE" />
-      <JFXButton layoutX="593.0" layoutY="169.0" onAction="#btnSearchOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="search-button" stylesheets="@../buttons.css" text="SEARCH" />
-      <JFXButton layoutX="593.0" layoutY="201.0" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="86.0" ripplerFill="BLACK" styleClass="clear-button" stylesheets="@../buttons.css" text="CLEAR" />
-      <TextField fx:id="imageName" editable="false" layoutX="171.0" layoutY="205.0" prefHeight="25.0" prefWidth="86.0" promptText="Upload a image">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </TextField>
-      <JFXButton layoutX="261.0" layoutY="205.0" onAction="#btnBrowseOnAction" style="-fx-background-color: white;" text="Browse" />
-      <Rectangle arcWidth="5.0" blendMode="MULTIPLY" fill="DODGERBLUE" height="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="707.0" />
-      <Label layoutX="113.0" layoutY="6.0" prefHeight="55.0" prefWidth="494.0" text="Product    Management">
-         <font>
-            <Font name="Georgia" size="47.0" />
-         </font>
-      </Label>
-      <Circle blendMode="ADD" fill="WHITE" layoutX="301.0" layoutY="34.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <ImageView blendMode="MULTIPLY" fitHeight="44.0" fitWidth="44.0" layoutX="279.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/clothify-logo.png" />
-         </image>
-      </ImageView>
+      <VBox prefHeight="640.0" prefWidth="960.0" spacing="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <!-- TOP LUXURY HEADER BANNER -->
+            <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="16.0" style="-fx-background-color: linear-gradient(to right, #1e3a8a, #2563eb, #3b82f6); -fx-padding: 12 24; -fx-effect: dropshadow(gaussian, rgba(30, 58, 138, 0.25), 10, 0, 0, 3);">
+               <children>
+                  <StackPane>
+                     <children>
+                        <Circle fill="WHITE" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" />
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/logo-background-removed-nav.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+
+                  <VBox alignment="CENTER_LEFT">
+                     <children>
+                        <Label text="Product Management" textFill="WHITE">
+                           <font>
+                              <Font name="Georgia Bold" size="26.0" />
+                           </font>
+                        </Label>
+                        <Label text="Clothify Haute Couture &amp; Ready-to-Wear Stock Hub" textFill="#dbeafe">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+
+                  <Region HBox.hgrow="ALWAYS" />
+
+                  <HBox alignment="CENTER" spacing="8.0" style="-fx-background-color: rgba(255, 255, 255, 0.15); -fx-background-radius: 20; -fx-padding: 6 14;">
+                     <children>
+                        <Label text="✨" />
+                        <Label text="Atelier Inventory Control" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+
+            <!-- MAIN FORM BODY -->
+            <VBox spacing="14.0" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="16.0" left="20.0" right="20.0" top="4.0" />
+               </padding>
+               <children>
+                  <!-- UPPER SECTION: Form Controls (Left), Image Preview (Center), Action Buttons (Right) -->
+                   <HBox spacing="16.0">
+                      <children>
+                         <!-- Left: Form Inputs Card (Expands when window is enlarged) -->
+                         <VBox minWidth="380.0" prefWidth="440.0" spacing="10.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-color: #e2e8f0; -fx-border-radius: 12; -fx-padding: 14; -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.05), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                            <children>
+                               <HBox spacing="10.0">
+                                  <children>
+                                     <JFXTextField fx:id="txtItemCode" prefHeight="32.0" promptText="Item Code (P001)" HBox.hgrow="ALWAYS">
+                                        <font>
+                                           <Font size="13.0" />
+                                        </font>
+                                     </JFXTextField>
+                                     <JFXComboBox fx:id="cmbCategory" prefHeight="32.0" prefWidth="150.0" promptText="Category" />
+                                  </children>
+                               </HBox>
+
+                               <JFXTextField fx:id="txtName" maxWidth="1.7976931348623157E308" prefHeight="32.0" promptText="Apparel Name">
+                                  <font>
+                                     <Font size="13.0" />
+                                  </font>
+                               </JFXTextField>
+
+                               <HBox spacing="10.0">
+                                  <children>
+                                     <JFXTextField fx:id="txtSize" prefHeight="32.0" prefWidth="100.0" promptText="Size" HBox.hgrow="ALWAYS">
+                                        <font>
+                                           <Font size="13.0" />
+                                        </font>
+                                     </JFXTextField>
+                                     <JFXTextField fx:id="txtPrice" prefHeight="32.0" prefWidth="120.0" promptText="Price (LKR)" HBox.hgrow="ALWAYS">
+                                        <font>
+                                           <Font size="13.0" />
+                                        </font>
+                                     </JFXTextField>
+                                     <JFXTextField fx:id="txtQuantity" prefHeight="32.0" prefWidth="90.0" promptText="Qty" HBox.hgrow="ALWAYS">
+                                        <font>
+                                           <Font size="13.0" />
+                                        </font>
+                                     </JFXTextField>
+                                  </children>
+                               </HBox>
+
+                               <JFXTextField fx:id="txtSupplier" maxWidth="1.7976931348623157E308" prefHeight="32.0" promptText="Supplier">
+                                  <font>
+                                     <Font size="13.0" />
+                                  </font>
+                               </JFXTextField>
+
+                               <!-- Image Upload Row -->
+                               <HBox alignment="CENTER_LEFT" spacing="8.0">
+                                  <children>
+                                     <TextField fx:id="imageName" editable="false" prefHeight="30.0" promptText="No image chosen" style="-fx-background-color: #f8fafc; -fx-border-color: #cbd5e1; -fx-border-radius: 6; -fx-background-radius: 6;" HBox.hgrow="ALWAYS">
+                                        <font>
+                                           <Font size="11.0" />
+                                        </font>
+                                     </TextField>
+                                     <JFXButton onAction="#btnBrowseOnAction" prefHeight="30.0" style="-fx-background-color: #f1f5f9; -fx-text-fill: #334155; -fx-border-color: #cbd5e1; -fx-border-radius: 6; -fx-background-radius: 6; -fx-cursor: hand;" text="Browse">
+                                        <font>
+                                           <Font name="System Bold" size="11.0" />
+                                        </font>
+                                     </JFXButton>
+                                  </children>
+                               </HBox>
+                            </children>
+                         </VBox>
+
+                         <!-- Center: Image Preview Card (Optimized Fixed Width, Enlarged Viewport to See Clearly) -->
+                         <VBox alignment="CENTER" maxWidth="330.0" minWidth="300.0" prefWidth="320.0" spacing="8.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-color: #e2e8f0; -fx-border-radius: 12; -fx-padding: 12; -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.05), 10, 0, 0, 2);">
+                            <children>
+                               <HBox alignment="CENTER_LEFT">
+                                  <children>
+                                     <Label text="Apparel Image Preview" textFill="#64748b" HBox.hgrow="ALWAYS">
+                                        <font>
+                                           <Font name="System Bold" size="12.0" />
+                                        </font>
+                                     </Label>
+                                     <Region HBox.hgrow="ALWAYS" />
+                                     <Button mnemonicParsing="false" onAction="#btnClearImageOnAction" style="-fx-background-color: transparent; -fx-text-fill: #ef4444; -fx-font-size: 11px; -fx-cursor: hand;" text="Clear ✕" />
+                                  </children>
+                               </HBox>
+                               <StackPane prefHeight="190.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 8; -fx-border-color: #e2e8f0; -fx-border-radius: 8;">
+                                  <children>
+                                     <VBox fx:id="placeholderBox" alignment="CENTER" spacing="6.0">
+                                        <children>
+                                           <SVGPath content="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" fill="TRANSPARENT" scaleX="1.4" scaleY="1.4" stroke="#94a3b8" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="1.8" />
+                                           <Label text="No Photo Uploaded" textFill="#64748b">
+                                              <font>
+                                                 <Font name="System Bold" size="11.5" />
+                                              </font>
+                                           </Label>
+                                           <Label text="Click Browse to select image" textFill="#94a3b8">
+                                              <font>
+                                                 <Font size="10.5" />
+                                              </font>
+                                           </Label>
+                                        </children>
+                                     </VBox>
+                                     <ImageView fx:id="itemImage" fitHeight="175.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                                  </children>
+                               </StackPane>
+                            </children>
+                         </VBox>
+
+                         <!-- Right: Action Buttons Card (Fixed Width) -->
+                         <VBox alignment="CENTER" maxWidth="190.0" minWidth="170.0" prefWidth="180.0" spacing="10.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-color: #e2e8f0; -fx-border-radius: 12; -fx-padding: 14; -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.05), 10, 0, 0, 2);">
+                            <children>
+                               <JFXButton maxWidth="1.7976931348623157E308" onAction="#btnAddOnAction" prefHeight="32.0" ripplerFill="BLACK" styleClass="add-button" text="+ ADD ITEM">
+                                  <cursor>
+                                     <Cursor fx:constant="HAND" />
+                                  </cursor>
+                               </JFXButton>
+                               <JFXButton maxWidth="1.7976931348623157E308" onAction="#btnUpdateOnAction" prefHeight="32.0" ripplerFill="BLACK" styleClass="update-button" text="✎ UPDATE">
+                                  <cursor>
+                                     <Cursor fx:constant="HAND" />
+                                  </cursor>
+                               </JFXButton>
+                               <JFXButton maxWidth="1.7976931348623157E308" onAction="#btnDeleteOnAction" prefHeight="32.0" ripplerFill="BLACK" styleClass="delete-button" text="✕ DELETE">
+                                  <cursor>
+                                     <Cursor fx:constant="HAND" />
+                                  </cursor>
+                               </JFXButton>
+                               <JFXButton maxWidth="1.7976931348623157E308" onAction="#btnSearchOnAction" prefHeight="32.0" ripplerFill="BLACK" styleClass="search-button" text="SEARCH">
+                                  <cursor>
+                                     <Cursor fx:constant="HAND" />
+                                  </cursor>
+                               </JFXButton>
+                               <JFXButton maxWidth="1.7976931348623157E308" onAction="#btnClearOnAction" prefHeight="32.0" ripplerFill="BLACK" styleClass="clear-button" text="CLEAR">
+                                  <cursor>
+                                     <Cursor fx:constant="HAND" />
+                                  </cursor>
+                               </JFXButton>
+                            </children>
+                         </VBox>
+                      </children>
+                   </HBox>
+
+                   <!-- LOWER SECTION: Products TableView with Light table.css and Auto Constrained Resizing -->
+                   <TableView fx:id="tblItems" minHeight="220.0" prefHeight="280.0" stylesheets="@../table.css" VBox.vgrow="ALWAYS">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <columns>
+                       <TableColumn fx:id="colItemCode" maxWidth="90.0" minWidth="75.0" prefWidth="80.0" text="Code" />
+                       <TableColumn fx:id="colName" minWidth="200.0" prefWidth="260.0" text="Apparel Name" />
+                       <TableColumn fx:id="colSize" maxWidth="80.0" minWidth="65.0" prefWidth="70.0" text="Size" />
+                       <TableColumn fx:id="colPrice" maxWidth="140.0" minWidth="105.0" prefWidth="110.0" text="Price (LKR)" />
+                       <TableColumn fx:id="colQuantity" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" text="Qty" />
+                       <TableColumn fx:id="colCategory" maxWidth="140.0" minWidth="95.0" prefWidth="100.0" text="Category" />
+                       <TableColumn fx:id="colSupplier" maxWidth="260.0" minWidth="140.0" prefWidth="160.0" text="Supplier" />
+                       <TableColumn fx:id="colImage" maxWidth="120.0" minWidth="95.0" prefWidth="105.0" text="Image" />
+                     </columns>
+                   </TableView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
