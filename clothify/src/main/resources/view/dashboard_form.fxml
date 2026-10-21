@@ -4,156 +4,516 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-position-shape: arc-button;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardFormController">
+<AnchorPane fx:id="rootPane" minHeight="540.0" minWidth="920.0" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #f8fafc;" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardFormController">
    <children>
-      <ImageView blendMode="DARKEN" fitHeight="400.0" fitWidth="600.0" nodeOrientation="INHERIT" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+      <!-- Subtle haute couture atelier background -->
+      <ImageView fx:id="bgImageView" blendMode="MULTIPLY" opacity="0.10" pickOnBounds="true" preserveRatio="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../Images/dashboard-background.png" />
          </image>
       </ImageView>
-      <Circle fill="WHITE" layoutX="300.0" layoutY="194.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="131.0" layoutY="118.0" rotate="-58.0" text="User Management">
-         <font>
-            <Font name="Bodoni MT Bold" size="13.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="361.0" layoutY="127.0" rotate="58.0" text="Product Management">
-         <font>
-            <Font name="Times New Roman Bold" size="12.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="129.0" layoutY="249.0" rotate="60.9" text="Supplier Management" textAlignment="CENTER">
-         <font>
-            <Font name="Bodoni MT Bold" size="12.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="363.0" layoutY="253.0" rotate="-54.5" text="Employee Management" textAlignment="CENTER">
-         <font>
-            <Font name="Bodoni MT Bold" size="11.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="249.0" layoutY="55.0" text="Order Management">
-         <font>
-            <Font name="Bodoni MT Bold" size="13.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <StackPane layoutX="200.0" layoutY="94.0">
+
+      <!-- Main Layout Container -->
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Circle opacity="0.08" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <ImageView blendMode="DARKEN" fitHeight="200.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/myLogo.png" />
-               </image>
-            </ImageView>
+            <!-- TOP LUXURY HEADER BAR -->
+            <HBox alignment="CENTER_LEFT" prefHeight="76.0" spacing="16.0" style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-border-color: #e2e8f0; -fx-border-width: 0 0 1 0; -fx-padding: 12 24;">
+               <children>
+                  <!-- Brand Logo & Title -->
+                  <HBox alignment="CENTER_LEFT" spacing="12.0">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <Circle fill="#fffbeb" radius="24.0" stroke="#fde68a" strokeType="INSIDE" strokeWidth="1.5" />
+                              <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/logo-background-removed-nav.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <VBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="CLOTHIFY" textFill="#0f172a">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label text="HAUTE COUTURE POS &amp; ATELIER ERP" textFill="#d97706">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <Region HBox.hgrow="ALWAYS" />
+
+                  <!-- Live Greeting & Digital Clock -->
+                  <HBox alignment="CENTER" spacing="16.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 20; -fx-border-color: #e2e8f0; -fx-border-radius: 20; -fx-padding: 6 18;">
+                     <children>
+                        <Label fx:id="lblGreeting" text="Good afternoon, Admin! ✨" textFill="#334155">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="•" textFill="#cbd5e1" />
+                        <Label fx:id="lblClock" text="00:00:00" textFill="#d97706">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="•" textFill="#cbd5e1" />
+                        <Label fx:id="lblDate" text="Monday, Oct 19, 2026" textFill="#64748b">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+
+                  <Region HBox.hgrow="ALWAYS" />
+
+                  <!-- User Profile & Status Pill -->
+                  <HBox alignment="CENTER" spacing="12.0">
+                     <children>
+                        <HBox alignment="CENTER" spacing="6.0" style="-fx-background-color: #ecfdf5; -fx-background-radius: 14; -fx-border-color: #a7f3d0; -fx-border-radius: 14; -fx-padding: 4 10;">
+                           <children>
+                              <Circle fill="#10b981" radius="4.0" stroke="#10b981" strokeType="INSIDE" />
+                              <Label text="MySQL Resilient" textFill="#047857">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+
+                        <!-- User Profile Chip -->
+                        <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #f1f5f9; -fx-background-radius: 20; -fx-padding: 4 12 4 6; -fx-border-color: #cbd5e1; -fx-border-radius: 20;">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Circle fill="#f59e0b" radius="16.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="1.5" />
+                                    <Label fx:id="lblUserInitial" text="A" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <VBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label fx:id="lblUserName" text="Administrator" textFill="#0f172a">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lblUserRole" text="ADMIN" textFill="#d97706">
+                                       <font>
+                                          <Font name="System Bold" size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+
+            <!-- CENTER CONTENT AREA WITH RADIAL WHEEL & BOUTIQUE STAT CARDS -->
+            <HBox alignment="CENTER" spacing="24.0" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="16.0" left="24.0" right="24.0" top="16.0" />
+               </padding>
+               <children>
+
+                  <!-- LEFT FLOATING BOUTIQUE CARD: Inventory & Partners -->
+                  <VBox alignment="CENTER_LEFT" prefWidth="270.0" spacing="14.0" styleClass="boutique-card">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="8.0">
+                           <children>
+                              <Label text="★" textFill="#d97706">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="BOUTIQUE INVENTORY" textFill="#0f172a">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+
+                        <VBox spacing="10.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 10; -fx-border-color: #e2e8f0; -fx-border-radius: 10;">
+                                 <children>
+                                    <StackPane prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #fef3c7; -fx-background-radius: 8; -fx-border-color: #fde68a; -fx-border-radius: 8;">
+                                       <children>
+                                          <Label text="◆" textFill="#d97706" style="-fx-font-size: 13px; -fx-font-weight: bold;" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Total Products" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTotalProducts" text="12 Items" textFill="#0f172a">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <!-- Low Stock (Qty <= 5) -->
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 8 10; -fx-border-color: #e2e8f0; -fx-border-radius: 10;">
+                                 <children>
+                                    <StackPane prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #fffbeb; -fx-background-radius: 8; -fx-border-color: #fde68a; -fx-border-radius: 8;">
+                                       <children>
+                                          <Label text="⚠" textFill="#d97706" style="-fx-font-size: 13px; -fx-font-weight: bold;" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Low Stock (≤ 5)" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblLowStock" text="0 Low" textFill="#d97706">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <!-- Stock Out (Qty == 0) -->
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #fef2f2; -fx-background-radius: 10; -fx-padding: 8 10; -fx-border-color: #fecaca; -fx-border-radius: 10;">
+                                 <children>
+                                    <StackPane prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #fee2e2; -fx-background-radius: 8; -fx-border-color: #fca5a5; -fx-border-radius: 8;">
+                                       <children>
+                                          <Label text="⛔" textFill="#dc2626" style="-fx-font-size: 13px;" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Stock Out (0 Qty)" textFill="#991b1b">
+                                             <font>
+                                                <Font name="System Bold" size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblStockOut" text="0 Out" textFill="#dc2626">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 10; -fx-border-color: #e2e8f0; -fx-border-radius: 10;">
+                                 <children>
+                                    <StackPane prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #eef2ff; -fx-background-radius: 8; -fx-border-color: #c7d2fe; -fx-border-radius: 8;">
+                                       <children>
+                                          <Label text="❖" textFill="#4f46e5" style="-fx-font-size: 13px; -fx-font-weight: bold;" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Verified Suppliers" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTotalSuppliers" text="5 Partners" textFill="#0f172a">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+
+                        <!-- STOCKOUT ITEMS LIST CONTAINER -->
+                        <VBox spacing="6.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label text="STOCKOUT ITEMS LIST" textFill="#64748b">
+                                       <font>
+                                          <Font name="System Bold" size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="lblStockoutListBadge" style="-fx-background-color: #ecfdf5; -fx-text-fill: #047857; -fx-padding: 1 6; -fx-background-radius: 8; -fx-font-size: 9px; -fx-font-weight: bold;" text="0 Out" />
+                                 </children>
+                              </HBox>
+                              <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxHeight="100.0" minHeight="50.0" prefHeight="72.0" style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-background-radius: 8;" vbarPolicy="AS_NEEDED">
+                                 <content>
+                                    <VBox fx:id="vboxStockoutList" spacing="4.0" style="-fx-background-color: #f8fafc; -fx-padding: 4;" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnProductManagementOnAction" prefHeight="34.0" style="-fx-background-color: #fef3c7; -fx-text-fill: #92400e; -fx-background-radius: 8; -fx-border-color: #fde68a; -fx-border-radius: 8; -fx-cursor: hand;" text="Product Catalog &amp; Restock ➔">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+
+                  <!-- CENTERPIECE: RADIAL WHEEL NAVIGATION HUB (LARGE ENHANCED EDITION) -->
+                  <StackPane alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <!-- Outer Ambient Glow Rings -->
+                        <Circle fill="#ffffff00" radius="255.0" stroke="#fde68a" style="-fx-stroke-dash-array: 8 8;" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fill="#ffffff00" radius="240.0" stroke="#e2e8f0" strokeType="INSIDE" strokeWidth="1.5" />
+
+                        <!-- Radial Ring Anchor Container (Enlarged to fit available screen) -->
+                        <AnchorPane maxHeight="540.0" maxWidth="600.0" minHeight="540.0" minWidth="600.0" prefHeight="540.0" prefWidth="600.0">
+                           <children>
+                              <!-- Central White Base Circle -->
+                              <Circle fill="WHITE" layoutX="300.0" layoutY="270.0" radius="152.0" stroke="#fde68a" strokeType="INSIDE" strokeWidth="2.5" />
+
+                              <!-- Central Orb Layer with Large Round Logo & Dynamic Hover Information -->
+                              <StackPane fx:id="centerOrbPane" layoutX="154.0" layoutY="124.0" prefHeight="292.0" prefWidth="292.0" pickOnBounds="false">
+                                 <children>
+                                    <Circle fill="WHITE" opacity="0.98" radius="146.0" stroke="#f59e0b" strokeType="INSIDE" strokeWidth="3.5">
+                                       <effect>
+                                          <DropShadow color="#00000026" radius="18.0" offsetY="3.0" />
+                                       </effect>
+                                    </Circle>
+
+                                    <!-- Default Idle Logo Display: Large Circular Clipped Logo fitting round area -->
+                                    <VBox fx:id="orbIdleBox" alignment="CENTER" prefHeight="292.0" prefWidth="292.0">
+                                       <children>
+                                          <ImageView fx:id="imgCenterLogo" fitHeight="280.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
+                                             <clip>
+                                                <Circle centerX="140.0" centerY="140.0" radius="140.0" />
+                                             </clip>
+                                             <image>
+                                                <Image url="@../Images/logo-background-removed-central.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+
+                                    <!-- Dynamic Hover Info Display (Fades in when hovering over sectors) -->
+                                    <VBox fx:id="orbHoverBox" alignment="CENTER" opacity="0.0" prefHeight="292.0" prefWidth="292.0" spacing="8.0" visible="false">
+                                       <children>
+                                          <Label fx:id="lblOrbIcon" style="-fx-font-size: 50px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0.2, 0, 2);" text="👗" />
+                                          <Label fx:id="lblOrbTitle" text="PRODUCT MANAGEMENT" textAlignment="CENTER" textFill="#0f172a" wrapText="true">
+                                             <font>
+                                                <Font name="Bodoni MT Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblOrbSubtitle" text="12 Items in Catalog" textAlignment="CENTER" textFill="#d97706">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label style="-fx-background-color: #e0e7ff; -fx-text-fill: #4338ca; -fx-background-radius: 12; -fx-padding: 4 14;" text="Click to Launch ➔">
+                                             <font>
+                                                <Font name="System Bold" size="11.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </StackPane>
+
+                              <!-- DYNAMIC RADIAL ARC SECTORS (RENDERED PROPORTIONALLY PER USER PERMISSIONS) -->
+                              <Group fx:id="svgWheelGroup" />
+
+                              <!-- Curved Navigation Labels Overlay: text centered in each arc with generous margins -->
+                              <Group fx:id="curvedLabelsGroup" mouseTransparent="true" pickOnBounds="false" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+
+                  <!-- RIGHT FLOATING BOUTIQUE CARD: Today's Operations -->
+                  <VBox alignment="CENTER_LEFT" prefWidth="270.0" spacing="14.0" styleClass="boutique-card">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="8.0">
+                           <children>
+                              <Label text="★" textFill="#d97706">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="TODAY'S OPERATIONS" textFill="#0f172a">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+
+                        <VBox spacing="10.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 10; -fx-border-color: #e2e8f0; -fx-border-radius: 10;">
+                                 <children>
+                                    <StackPane prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #ecfdf5; -fx-background-radius: 8; -fx-border-color: #a7f3d0; -fx-border-radius: 8;">
+                                       <children>
+                                          <Label text="✓" textFill="#047857" style="-fx-font-size: 15px; -fx-font-weight: bold;" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Today's POS Sales" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTodayRevenue" text="LKR 12,450.00" textFill="#047857">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 10; -fx-border-color: #e2e8f0; -fx-border-radius: 10;">
+                                 <children>
+                                    <StackPane prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #eff6ff; -fx-background-radius: 8; -fx-border-color: #bfdbfe; -fx-border-radius: 8;">
+                                       <children>
+                                          <Label text="●" textFill="#1d4ed8" style="-fx-font-size: 12px; -fx-font-weight: bold;" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Today's Orders" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTotalOrders" text="24 Orders" textFill="#0f172a">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 10; -fx-border-color: #e2e8f0; -fx-border-radius: 10;">
+                                 <children>
+                                    <StackPane prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #f5f3ff; -fx-background-radius: 8; -fx-border-color: #ddd6fe; -fx-border-radius: 8;">
+                                       <children>
+                                          <Label text="✦" textFill="#7c3aed" style="-fx-font-size: 13px; -fx-font-weight: bold;" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label text="Staff on Duty" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTotalEmployees" text="6 Employees" textFill="#0f172a">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnOrderManagementOnAction" prefHeight="34.0" style="-fx-background-color: #ecfdf5; -fx-text-fill: #065f46; -fx-background-radius: 8; -fx-border-color: #a7f3d0; -fx-border-radius: 8; -fx-cursor: hand;" text="Launch POS Register ➔">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnOrderHistoryOnAction" prefHeight="34.0" style="-fx-background-color: #eff6ff; -fx-text-fill: #1d4ed8; -fx-background-radius: 8; -fx-border-color: #bfdbfe; -fx-border-radius: 8; -fx-cursor: hand;" text="View Placed Orders (History) ➔">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <!-- BOTTOM LUXURY ACTION & DOCK BAR -->
+            <HBox alignment="CENTER" prefHeight="64.0" spacing="16.0" style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-border-color: #e2e8f0; -fx-border-width: 1 0 0 0; -fx-padding: 10 24;">
+               <children>
+                  <!-- Quick shortcuts dock -->
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label text="Quick Launch:" textFill="#64748b">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#btnOrderManagementOnAction" prefHeight="32.0" style="-fx-background-color: #f1f5f9; -fx-text-fill: #334155; -fx-background-radius: 16; -fx-border-color: #cbd5e1; -fx-border-radius: 16; -fx-cursor: hand; -fx-font-weight: bold; -fx-padding: 4 14;" text="+ POS Register" />
+                        <Button mnemonicParsing="false" onAction="#btnOrderHistoryOnAction" prefHeight="32.0" style="-fx-background-color: #eff6ff; -fx-text-fill: #1d4ed8; -fx-background-radius: 16; -fx-border-color: #bfdbfe; -fx-border-radius: 16; -fx-cursor: hand; -fx-font-weight: bold; -fx-padding: 4 14;" text="Placed Orders ➔" />
+                        <Button mnemonicParsing="false" onAction="#btnProductManagementOnAction" prefHeight="32.0" style="-fx-background-color: #f1f5f9; -fx-text-fill: #334155; -fx-background-radius: 16; -fx-border-color: #cbd5e1; -fx-border-radius: 16; -fx-cursor: hand; -fx-font-weight: bold; -fx-padding: 4 14;" text="Product Catalog" />
+                        <Button mnemonicParsing="false" onAction="#btnReportManagementOnAction" prefHeight="32.0" style="-fx-background-color: #f1f5f9; -fx-text-fill: #334155; -fx-background-radius: 16; -fx-border-color: #cbd5e1; -fx-border-radius: 16; -fx-cursor: hand; -fx-font-weight: bold; -fx-padding: 4 14;" text="Store Reports" />
+                        <Button mnemonicParsing="false" onAction="#btnRefreshStats" prefHeight="32.0" style="-fx-background-color: #f1f5f9; -fx-text-fill: #334155; -fx-background-radius: 16; -fx-border-color: #cbd5e1; -fx-border-radius: 16; -fx-cursor: hand; -fx-font-weight: bold; -fx-padding: 4 14;" text="Refresh Data" />
+                     </children>
+                  </HBox>
+
+                  <Region HBox.hgrow="ALWAYS" />
+
+                  <!-- Luxury Sign Out Button (signout.css) -->
+                  <JFXButton buttonType="RAISED" onAction="#btnSignOutOnAction" prefHeight="38.0" prefWidth="130.0" stylesheets="@../signout.css" text="Sign Out ➔" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </HBox>
          </children>
-      </StackPane>
-      <VBox layoutX="378.0" layoutY="100.0" />
-      <Group layoutX="135.0" layoutY="28.0">
-         <children>
-            <Label alignment="CENTER" cacheHint="ROTATE" contentDisplay="CENTER" layoutX="108.0" layoutY="290.0" text=" Report Management">
-               <font>
-                  <Font name="Bodoni MT Bold" size="13.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Label>
-            <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="1.0" layoutY="30.0" onAction="#btnUserManagementOnAction" prefHeight="128.0" prefWidth="103.0" styleClass="fourth-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="88.0" onAction="#btnOrderManagementOnAction" prefHeight="68.0" prefWidth="154.0" styleClass="fifth-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutY="166.0" onAction="#btnSupplierManagementOnAction" prefHeight="141.0" prefWidth="103.0" styleClass="third-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="87.0" layoutY="264.0" onAction="#btnReportManagementOnAction" prefHeight="75.0" prefWidth="154.0" styleClass="second-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="225.0" layoutY="174.0" onAction="#btnEmployeeManagementOnAction" prefHeight="128.0" prefWidth="103.0" styleClass="first-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" blendMode="MULTIPLY" contentDisplay="TOP" layoutX="226.0" layoutY="31.0" onAction="#btnProductManagementOnAction" prefHeight="135.0" prefWidth="103.0" styleClass="sixth-button" text="." textFill="#e76f24" textOverrun="LEADING_WORD_ELLIPSIS">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="Arial" size="12.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </Group>
-      <JFXButton buttonType="RAISED" layoutX="466.0" layoutY="340.0" onAction="#btnSignOutOnAction" prefHeight="49.0" prefWidth="122.0" ripplerFill="#0066ff" stylesheets="@../signout.css" text="Sign Out" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXButton>
+      </VBox>
    </children>
 </AnchorPane>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #f8fafc;" stylesheets="@../modern-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.OverviewController">
+   <content>
+      <VBox spacing="20.0" style="-fx-background-color: #f8fafc;">
+         <padding>
+            <Insets bottom="30.0" left="28.0" right="28.0" top="24.0" />
+         </padding>
+         <children>
+            <!-- Header section with Refresh button -->
+            <HBox alignment="CENTER_LEFT" spacing="16.0">
+               <children>
+                  <VBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="heading-title" text="Executive Dashboard Overview" />
+                        <Label styleClass="heading-subtitle" text="Real-time retail metrics, inventory health, and sales momentum" />
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" onAction="#btnRefreshOnAction" styleClass="btn-secondary" text="🔄 Refresh Data" />
+               </children>
+            </HBox>
+
+            <!-- 4 Top KPI Metric Cards -->
+            <HBox spacing="16.0">
+               <children>
+                  <!-- Card 1: Today's Revenue -->
+                  <VBox prefHeight="105.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="TODAY'S SALES" textFill="#64748b">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblTodaySales" text="LKR 0.00" textFill="#047857">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="Net gross revenue today" textFill="#64748b">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+
+                  <!-- Card 2: Monthly Orders -->
+                  <VBox prefHeight="105.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="MONTHLY ORDERS" textFill="#64748b">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTodayOrders" text="0" textFill="#0284c7">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="Orders processed this month" textFill="#64748b">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+
+                  <!-- Card 3: Active Products -->
+                  <VBox prefHeight="105.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="TOTAL PRODUCTS" textFill="#64748b">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTotalProducts" text="0" textFill="#d97706">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="Items listed in catalog" textFill="#64748b">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+
+                  <!-- Card 4: Low Stock Alert -->
+                  <VBox prefHeight="105.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="LOW STOCK WARNINGS" textFill="#64748b">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblLowStockCount" text="0" textFill="#dc2626">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="Items below safety threshold" textFill="#64748b">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <!-- Chart & Operational Status Area -->
+            <HBox spacing="18.0">
+               <children>
+                  <!-- Revenue Trend Chart (65%) -->
+                  <VBox prefHeight="320.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <VBox HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="card-title" text="Sales Revenue Trajectory" />
+                                    <Label styleClass="heading-subtitle" text="Monthly sales performance in Sri Lankan Rupees" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <LineChart fx:id="chartSales" createSymbols="true" legendVisible="false" prefHeight="240.0">
+                          <xAxis>
+                            <CategoryAxis label="Timeline" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="Revenue (LKR)" side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                  </VBox>
+
+                  <!-- Quick Stats & System Health (35%) -->
+                  <VBox prefHeight="320.0" prefWidth="340.0" spacing="12.0" styleClass="card">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="card-title" text="Store Operations Health" />
+                        <VBox spacing="10.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 8; -fx-padding: 10; -fx-border-color: #e2e8f0; -fx-border-radius: 8;">
+                                 <children>
+                                    <Label style="-fx-font-size: 20px;" text="👥" />
+                                    <VBox>
+                                       <children>
+                                          <Label text="Active Staff &amp; Cashiers" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTotalEmployees" text="0 Employees" textFill="#0f172a">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 8; -fx-padding: 10; -fx-border-color: #e2e8f0; -fx-border-radius: 8;">
+                                 <children>
+                                    <Label style="-fx-font-size: 20px;" text="🏢" />
+                                    <VBox>
+                                       <children>
+                                          <Label text="Registered Suppliers" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblTotalSuppliers" text="0 Suppliers" textFill="#0f172a">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #ecfdf5; -fx-background-radius: 8; -fx-padding: 10; -fx-border-color: #a7f3d0; -fx-border-radius: 8;">
+                                 <children>
+                                    <Label style="-fx-font-size: 20px;" text="⚡" />
+                                    <VBox>
+                                       <children>
+                                          <Label text="Database Engine" textFill="#047857">
+                                             <font>
+                                                <Font size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="MySQL 8.4 • Active" textFill="#065f46">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <!-- Recent Orders Audit Table -->
+            <VBox spacing="10.0" styleClass="card">
+               <padding>
+                  <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="card-title" text="Recent Store Invoices &amp; Transactions" />
+                              <Label styleClass="heading-subtitle" text="Latest customer checkout records" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tblRecentOrders" prefHeight="220.0">
+                    <columnResizePolicy>
+                       <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                    <columns>
+                      <TableColumn fx:id="colOrderId" maxWidth="130.0" minWidth="90.0" prefWidth="110.0" text="Order ID" />
+                      <TableColumn fx:id="colDate" maxWidth="130.0" minWidth="90.0" prefWidth="110.0" text="Date" />
+                      <TableColumn fx:id="colCustomer" minWidth="180.0" prefWidth="240.0" text="Customer" />
+                      <TableColumn fx:id="colPayment" maxWidth="130.0" minWidth="90.0" prefWidth="110.0" text="Payment" />
+                      <TableColumn fx:id="colTotal" maxWidth="160.0" minWidth="100.0" prefWidth="130.0" text="Total (LKR)" />
+                      <TableColumn fx:id="colStatus" maxWidth="130.0" minWidth="90.0" prefWidth="110.0" text="Status" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

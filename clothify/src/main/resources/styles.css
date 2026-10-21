@@ -1,31 +1,243 @@
-.first-button{
-	-fx-shape: "M150,0 A150,150 0 0,1 75,129.9 L50,86.6 A100,100 0 0,0 100,0 Z";
-	-fx-background-color: orange;
+/* ==========================================================================
+   CLOTHIFY HAUTE COUTURE - RADIAL WHEEL NAVIGATION STYLESHEET
+   Light Boutique Luxury Edition
+   ========================================================================== */
+
+/* The 6 Precision SVG Arc Sectors forming a 360-degree Segmented Donut Ring */
+/* Outer Radius = 150, Inner Radius = 100 */
+
+/* ==========================================================================
+   THE 6 SEGMENTED SVG RADIAL ARC SECTORS (LARGE ENHANCED EDITION)
+   ========================================================================== */
+
+/* 1. Employee Management: 0° to 60° (Bottom-Right) */
+.employee-sector {
+    -fx-fill: linear-gradient(to bottom right, #0ea5e9, #0284c7);
+    -fx-stroke: white;
+    -fx-stroke-width: 2.0;
+    -fx-effect: dropshadow(gaussian, rgba(14, 165, 233, 0.35), 8, 0.1, 0, 0);
+    -fx-cursor: hand;
 }
-.second-button{
-	-fx-shape: "M75,129.9 A150,150 0 0,1 -75,129.9 L-50,86.6 A100,100 0 0,0 50,86.6 Z";
-	-fx-background-color: orange;
-}
-.third-button{
-	-fx-shape: "M-75,129.9 A150,150 0 0,1 -150,0 L-100,0 A100,100 0 0,0 -50,86.6 Z";
-	-fx-background-color: orange;
-}
-.fourth-button{
-	-fx-shape: "M-150,0 A150,150 0 0,1 -75,-129.9 L-50,-86.6 A100,100 0 0,0 -100,0 Z";
-	-fx-background-color: orange;
-}
-.fifth-button{
-	-fx-shape: "M-75,-129.9 A150,150 0 0,1 75,-129.9 L50,-86.6 A100,100 0 0,0 -50,-86.6 Z";
-	-fx-background-color: orange;
-}
-.sixth-button{
-	-fx-shape: "M75,-129.9 A150,150 0 0,1 150,0 L100,0 A100,100 0 0,0 50,-86.6 Z";
-	-fx-background-color: orange;
+.employee-sector:hover {
+    -fx-fill: linear-gradient(to bottom right, #38bdf8, #0ea5e9);
+    -fx-effect: dropshadow(gaussian, rgba(14, 165, 233, 0.65), 12, 0.2, 0, 0);
 }
 
-.button:hover {
-    -fx-background-color: linear-gradient(to right, #ff4b2b, #ff416c);
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 10, 0.3, 0, 6);
-    -fx-scale-x: 1.05;
-    -fx-scale-y: 1.05;
+/* 2. Report Management: 60° to 120° (Bottom) */
+.report-sector {
+    -fx-fill: linear-gradient(to bottom right, #8b5cf6, #6d28d9);
+    -fx-stroke: white;
+    -fx-stroke-width: 2.0;
+    -fx-effect: dropshadow(gaussian, rgba(139, 92, 246, 0.35), 6, 0.1, 0, 0);
+    -fx-cursor: hand;
+}
+.report-sector:hover {
+    -fx-fill: linear-gradient(to bottom right, #a78bfa, #7c3aed);
+    -fx-effect: dropshadow(gaussian, rgba(139, 92, 246, 0.50), 6, 0.1, 0, 0);
+}
+
+/* 3. Supplier Management: 120° to 180° (Bottom-Left) */
+.supplier-sector {
+    -fx-fill: linear-gradient(to bottom right, #10b981, #047857);
+    -fx-stroke: white;
+    -fx-stroke-width: 2.0;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.35), 8, 0.1, 0, 0);
+    -fx-cursor: hand;
+}
+.supplier-sector:hover {
+    -fx-fill: linear-gradient(to bottom right, #34d399, #059669);
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.65), 12, 0.2, 0, 0);
+}
+
+/* 4. User Management: 180° to 240° (Top-Left) */
+.user-sector {
+    -fx-fill: linear-gradient(to bottom right, #6366f1, #4338ca);
+    -fx-stroke: white;
+    -fx-stroke-width: 2.0;
+    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.35), 8, 0.1, 0, 0);
+    -fx-cursor: hand;
+}
+.user-sector:hover {
+    -fx-fill: linear-gradient(to bottom right, #818cf8, #4f46e5);
+    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.65), 12, 0.2, 0, 0);
+}
+
+/* 5. Order Management: 240° to 300° (Top) */
+.order-sector {
+    -fx-fill: linear-gradient(to bottom right, #ec4899, #be185d);
+    -fx-stroke: white;
+    -fx-stroke-width: 2.0;
+    -fx-effect: dropshadow(gaussian, rgba(236, 72, 153, 0.35), 8, 0.1, 0, 0);
+    -fx-cursor: hand;
+}
+.order-sector:hover {
+    -fx-fill: linear-gradient(to bottom right, #f472b6, #db2777);
+    -fx-effect: dropshadow(gaussian, rgba(236, 72, 153, 0.65), 12, 0.2, 0, 0);
+}
+
+/* 6. Product Management: 300° to 360° (Top-Right) */
+.product-sector {
+    -fx-fill: linear-gradient(to bottom right, #f59e0b, #b45309);
+    -fx-stroke: white;
+    -fx-stroke-width: 2.0;
+    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.35), 8, 0.1, 0, 0);
+    -fx-cursor: hand;
+}
+.product-sector:hover {
+    -fx-fill: linear-gradient(to bottom right, #fbbf24, #d97706);
+    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.65), 12, 0.2, 0, 0);
+}
+
+/* General Button Base for the Hub */
+.radial-slice-btn {
+    -fx-cursor: hand;
+    -fx-focus-traversable: false;
+}
+
+/* Center Logo Orb */
+.center-orb-circle {
+    -fx-fill: white;
+    -fx-stroke: linear-gradient(to bottom right, #fbbf24, #f59e0b);
+    -fx-stroke-width: 3;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 16, 0.2, 0, 4);
+}
+
+.center-orb-ring {
+    -fx-fill: transparent;
+    -fx-stroke: rgba(245, 158, 11, 0.25);
+    -fx-stroke-width: 1.5;
+    -fx-stroke-dash-array: 6 6;
+}
+
+/* Radial Wheel Rotated Labels */
+.wheel-label {
+    -fx-font-family: 'Bodoni MT', 'Georgia', serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f172a;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 4, 0.5, 0, 1);
+    -fx-cursor: hand;
+}
+
+.wheel-icon-label {
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+/* Light Boutique Glass Cards */
+.boutique-card {
+    -fx-background-color: rgba(255, 255, 255, 0.92);
+    -fx-background-radius: 16;
+    -fx-border-color: rgba(226, 232, 240, 0.9);
+    -fx-border-radius: 16;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.08), 16, 0, 0, 4);
+}
+
+.boutique-card:hover {
+    -fx-border-color: rgba(245, 158, 11, 0.5);
+    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.15), 20, 0, 0, 6);
+}
+
+.boutique-chip {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 20;
+    -fx-padding: 6 14;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 20;
+}
+
+/* Next-Level Luxury ComboBox & Dropdown Styling */
+.combo-box-base,
+.combo-box,
+.choice-box {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-font-family: 'Segoe UI', -apple-system, sans-serif;
+    -fx-font-size: 13px;
+    -fx-padding: 1px 4px 1px 6px;
+    -fx-cursor: hand;
+}
+
+.combo-box-base:hover,
+.combo-box:hover,
+.choice-box:hover {
+    -fx-border-color: #f59e0b;
+    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.20), 8, 0, 0, 1);
+}
+
+.combo-box-base:focused,
+.combo-box:focused,
+.choice-box:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d97706;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(217, 119, 6, 0.28), 10, 0, 0, 2);
+}
+
+.combo-box .cell,
+.combo-box > .list-cell {
+    -fx-text-fill: #0f172a;
+    -fx-font-weight: bold;
+    -fx-padding: 4px 6px;
+    -fx-background-color: transparent;
+}
+
+.combo-box-base .arrow-button,
+.combo-box .arrow-button,
+.choice-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 10px 0 4px;
+    -fx-cursor: hand;
+}
+
+.combo-box-base .arrow,
+.combo-box .arrow,
+.choice-box .arrow {
+    -fx-background-color: #64748b;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+    -fx-padding: 3px 4px;
+}
+
+.combo-box-base:hover .arrow,
+.combo-box:hover .arrow,
+.choice-box:hover .arrow,
+.combo-box-base:focused .arrow,
+.combo-box:focused .arrow,
+.choice-box:focused .arrow {
+    -fx-background-color: #d97706;
+}
+
+/* ComboBox Dropdown Popup List */
+.combo-box-popup .list-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.16), 16, 0, 0, 6);
+}
+
+.combo-box-popup .list-cell {
+    -fx-padding: 8px 12px;
+    -fx-text-fill: #1e293b;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #fef3c7;
+    -fx-text-fill: #92400e;
+    -fx-font-weight: bold;
+}
+
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #fde68a;
+    -fx-text-fill: #78350f;
+    -fx-font-weight: bold;
 }

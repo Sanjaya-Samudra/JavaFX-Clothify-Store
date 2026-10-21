@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: #f8fafc;" stylesheets="@../modern-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.report.ReportFormController">
+   <content>
+      <VBox spacing="20.0" style="-fx-background-color: #f8fafc;">
+         <padding>
+            <Insets bottom="30.0" left="28.0" right="28.0" top="24.0" />
+         </padding>
+         <children>
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="16.0">
+               <children>
+                  <StackPane>
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/logo-background-removed-nav.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <VBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="heading-title" text="Business Intelligence &amp; Analytics Reports" />
+                        <Label styleClass="heading-subtitle" text="Inventory valuation, sales trends, top performing apparel, and audit report generation" />
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" onAction="#btnRefreshOnAction" styleClass="btn-secondary" text="Refresh Analytics" />
+               </children>
+            </HBox>
+
+            <!-- 3 Top Stats Cards -->
+            <HBox spacing="16.0">
+               <children>
+                  <VBox prefHeight="100.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="TOTAL INVENTORY VALUATION" textFill="#64748b">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblInventoryValuation" text="LKR 0.00" textFill="#047857">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="Current cost asset valuation in stock" textFill="#64748b">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+
+                  <VBox prefHeight="100.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="TOTAL STOCK UNITS" textFill="#64748b">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTotalUnits" text="0" textFill="#0284c7">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="Apparel items in showroom and storage" textFill="#64748b">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+
+                  <VBox prefHeight="100.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label text="ACTIVE VENDORS &amp; STAFF" textFill="#64748b">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblVendorsStaff" text="0 Suppliers • 0 Staff" textFill="#4f46e5">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label text="Operational network" textFill="#64748b">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <!-- Chart Row -->
+            <HBox spacing="18.0">
+               <children>
+                  <VBox prefHeight="330.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="card-title" text="Monthly Revenue Trend" />
+                        <BarChart fx:id="chartMonthly" legendVisible="false" prefHeight="260.0">
+                          <xAxis>
+                            <CategoryAxis label="Month" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="LKR" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </VBox>
+
+                  <VBox prefHeight="330.0" styleClass="card" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="16.0" left="18.0" right="18.0" top="16.0" />
+                     </padding>
+                     <children>
+                        <Label styleClass="card-title" text="Top Selling Products by Volume" />
+                        <BarChart fx:id="chartTopProducts" legendVisible="false" prefHeight="260.0">
+                          <xAxis>
+                            <CategoryAxis label="Apparel" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis label="Units Sold" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <!-- Report Generator Panel -->
+            <VBox spacing="14.0" styleClass="card">
+               <padding>
+                  <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="12.0">
+                     <children>
+                        <VBox HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="card-title" text="Generate Formal Audit &amp; Operational Reports" />
+                              <Label styleClass="heading-subtitle" text="Select a report type to compile live data and preview or export" />
+                           </children>
+                        </VBox>
+                        <Button mnemonicParsing="false" onAction="#btnSaveReportToFileOnAction" styleClass="btn-primary" text="Save Report to File" />
+                     </children>
+                  </HBox>
+
+                  <HBox spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#btnSalesSummaryReportOnAction" styleClass="btn-secondary" text="Sales Summary Report" />
+                        <Button mnemonicParsing="false" onAction="#btnInventoryValuationReportOnAction" styleClass="btn-secondary" text="Inventory Valuation Report" />
+                        <Button mnemonicParsing="false" onAction="#btnSupplierReportOnAction" styleClass="btn-secondary" text="Supplier Directory Report" />
+                        <Button mnemonicParsing="false" onAction="#btnEmployeeReportOnAction" styleClass="btn-secondary" text="Employee Payroll Report" />
+                     </children>
+                  </HBox>
+
+                  <TextArea fx:id="txtReportPreview" editable="false" prefRowCount="14" style="-fx-font-family: 'Consolas', 'Courier New', monospace; -fx-font-size: 12px; -fx-background-color: #ffffff; -fx-text-fill: #0f172a; -fx-border-color: #cbd5e1; -fx-border-radius: 8;" wrapText="true" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

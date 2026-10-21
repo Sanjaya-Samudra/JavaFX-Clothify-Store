@@ -1,48 +1,596 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Rectangle2D?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="429.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.UserLoginFormController">
+<AnchorPane prefHeight="620.0" prefWidth="980.0" style="-fx-background-color: #f8fafc;" stylesheets="@../modern-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.UserLoginFormController">
    <children>
-      <ImageView fitHeight="125.0" fitWidth="103.0" layoutX="160.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/myLogo.png" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
-      <ImageView fx:id="loginImage" fitHeight="242.0" fitWidth="367.0" layoutX="39.0" layoutY="29.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/login.png" />
-         </image></ImageView>
-      <ImageView fitHeight="446.0" fitWidth="436.0" layoutX="-7.0" layoutY="-76.0" opacity="0.29" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/loginBackground.png" />
-         </image>
-      </ImageView>
-      <JFXTextField fx:id="email" layoutX="75.0" layoutY="134.0" prefHeight="31.0" prefWidth="279.0" promptText="Enter your email">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="password" layoutX="75.0" layoutY="184.0" prefHeight="31.0" prefWidth="279.0" promptText="Enter your password">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXCheckBox fx:id="forgotPassword" layoutX="75.0" layoutY="237.0" text="Fogot Password?">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXCheckBox>
-      <JFXButton layoutX="74.0" layoutY="281.0" onAction="#btnLoginOnAction" prefHeight="38.0" prefWidth="279.0" text="Login In" />
+      <HBox prefHeight="620.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <!-- Left Branding Showcase Pane (Deep Haute Couture Obsidian & Gold) -->
+            <VBox alignment="CENTER" prefHeight="620.0" prefWidth="420.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%); -fx-border-color: #334155; -fx-border-width: 0 1 0 0;">
+               <padding>
+                  <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+               </padding>
+               <children>
+                  <!-- Central Ambient Logo Orb -->
+                  <StackPane>
+                     <children>
+                        <Circle fill="#1e293b" radius="48.0" stroke="#f59e0b" strokeType="INSIDE" strokeWidth="2.5" style="-fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.40), 16, 0, 0, 0);" />
+                        <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/logo-background-removed-nav.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+
+                  <!-- Brand Typography -->
+                  <VBox alignment="CENTER" spacing="3.0">
+                     <children>
+                        <Label style="-fx-text-fill: #ffffff; -fx-font-family: 'Bodoni MT', 'Georgia', serif; -fx-font-weight: bold; -fx-font-size: 28px;" text="CLOTHIFY" />
+                        <Label text="HAUTE COUTURE POS &amp; ERP" textFill="#f59e0b">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label text="Next-Generation Apparel Boutique Suite" textFill="#94a3b8">
+                           <font>
+                              <Font size="11.5" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+
+                  <!-- Luxury Boutique Atelier Flagship Card -->
+                  <VBox alignment="CENTER" prefWidth="356.0" spacing="10.0" style="-fx-background-color: rgba(30, 41, 59, 0.75); -fx-background-radius: 14; -fx-padding: 14 18; -fx-border-color: rgba(245, 158, 11, 0.35); -fx-border-radius: 14; -fx-border-width: 1.2; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 16, 0, 0, 4);">
+                     <children>
+                        <HBox alignment="CENTER" spacing="8.0">
+                           <children>
+                              <Label text="★" textFill="#fbbf24">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="ATELIER FLAGSHIP STORE" textFill="#ffffff">
+                                 <font>
+                                    <Font name="Bodoni MT Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="14.0">
+                           <children>
+                              <VBox alignment="CENTER" spacing="2.0">
+                                 <children>
+                                    <Label text="Point of Sale" textFill="#94a3b8">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Thermal POS" textFill="#f8fafc">
+                                       <font>
+                                          <Font name="System Bold" size="11.5" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="|" textFill="#475569" />
+                              <VBox alignment="CENTER" spacing="2.0">
+                                 <children>
+                                    <Label text="Catalog Hub" textFill="#94a3b8">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Haute Couture" textFill="#f8fafc">
+                                       <font>
+                                          <Font name="System Bold" size="11.5" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Label text="|" textFill="#475569" />
+                              <VBox alignment="CENTER" spacing="2.0">
+                                 <children>
+                                    <Label text="Role Security" textFill="#94a3b8">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Radial RBAC" textFill="#f8fafc">
+                                       <font>
+                                          <Font name="System Bold" size="11.5" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="6.0" style="-fx-background-color: rgba(15, 23, 42, 0.6); -fx-background-radius: 8; -fx-padding: 3 10;">
+                           <children>
+                              <Circle fill="#10b981" radius="3.5" stroke="#10b981" strokeType="INSIDE" />
+                              <Label text="Headquarters: Colombo, Western Province" textFill="#cbd5e1">
+                                 <font>
+                                    <Font size="10.5" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+
+                  <!-- Feature Highlights -->
+                  <VBox prefWidth="356.0" spacing="8.0" style="-fx-background-color: rgba(30, 41, 59, 0.55); -fx-background-radius: 12; -fx-padding: 12 16; -fx-border-color: #334155; -fx-border-radius: 12; -fx-border-width: 1;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Label text="◆" textFill="#f59e0b" />
+                              <Label text="Precision POS &amp; Thermal Receipts" textFill="#e2e8f0">
+                                 <font>
+                                    <Font name="System Bold" size="11.5" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Label text="◆" textFill="#818cf8" />
+                              <Label text="Radial Wheel Navigation &amp; Stock Hub" textFill="#e2e8f0">
+                                 <font>
+                                    <Font name="System Bold" size="11.5" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <Label text="◆" textFill="#34d399" />
+                              <Label text="Encrypted Credentials &amp; Multi-Role RBAC" textFill="#e2e8f0">
+                                 <font>
+                                    <Font name="System Bold" size="11.5" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+
+                  <!-- Version Badge -->
+                  <HBox alignment="CENTER" spacing="6.0">
+                     <children>
+                        <Circle fill="#059669" radius="3.5" stroke="#059669" strokeType="INSIDE" />
+                        <Label text="Multi-Role Staff Portal v2.4 (Production Ready)" textFill="#64748b">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+
+            <!-- Right Interactive Form Pane (StackPane holding unified Sign-In, Reset Password, and Register) -->
+            <VBox alignment="CENTER" prefHeight="620.0" prefWidth="560.0" style="-fx-background-color: #f8fafc;" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="24.0" left="44.0" right="44.0" top="24.0" />
+               </padding>
+               <children>
+                  <StackPane VBox.vgrow="ALWAYS">
+                     <children>
+
+                        <!-- ========================================== -->
+                        <!-- VIEW 1: SIGN IN (ROLE-BASED AUTHENTICATION) -->
+                        <!-- ========================================== -->
+                        <VBox fx:id="paneSignIn" alignment="CENTER_LEFT" spacing="12.0">
+                           <children>
+                              <!-- Title & Header -->
+                              <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                 <children>
+                                    <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Images/logo-background-removed-nav.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox>
+                                       <children>
+                                          <Label styleClass="heading-title" text="Staff Portal Access">
+                                             <font>
+                                                <Font name="Bodoni MT Bold" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Select your role and enter credentials to enter workspace" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.5" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <!-- Role-Based Segmented Selector -->
+                              <VBox spacing="6.0">
+                                 <children>
+                                    <Label text="SELECT ACCESS ROLE" textFill="#64748b">
+                                       <font>
+                                          <Font name="System Bold" size="10.5" />
+                                       </font>
+                                    </Label>
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <Button fx:id="btnRoleAdmin" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRoleAdminSelected" prefHeight="36.0" style="-fx-background-color: #0f172a; -fx-text-fill: #f59e0b; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #f59e0b; -fx-border-radius: 8; -fx-cursor: hand;" text="Administrator" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="12.0" />
+                                             </font>
+                                             <graphic>
+                                                <SVGPath fx:id="svgRoleAdminIcon" content="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="#f59e0b" scaleX="0.7" scaleY="0.7" />
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="btnRoleCashier" graphicTextGap="8.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRoleCashierSelected" prefHeight="36.0" style="-fx-background-color: #f1f5f9; -fx-text-fill: #64748b; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-cursor: hand;" text="Cashier" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="12.0" />
+                                             </font>
+                                             <graphic>
+                                                <SVGPath fx:id="svgRoleCashierIcon" content="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" fill="#64748b" scaleX="0.7" scaleY="0.7" />
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <!-- Context Role Badge -->
+                                    <Label fx:id="lblRoleDesc" maxWidth="1.7976931348623157E308" style="-fx-background-color: #fef3c7; -fx-text-fill: #92400e; -fx-padding: 4 10; -fx-background-radius: 6; -fx-border-color: #fde68a; -fx-border-radius: 6; -fx-font-size: 11px; -fx-font-weight: bold;" text="Atelier Executive Access • Full ERP Control, Reports, Staff &amp; User Hub" />
+                                 </children>
+                              </VBox>
+
+                              <!-- Feedback Message Area -->
+                              <Label fx:id="lblMessage" minHeight="16.0" textFill="#dc2626" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="11.5" />
+                                 </font>
+                              </Label>
+
+                              <!-- Input Fields -->
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <VBox spacing="4.0">
+                                       <children>
+                                          <Label text="Staff Email Address" textFill="#334155">
+                                             <font>
+                                                <Font name="System Bold" size="11.5" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="email" prefHeight="38.0" promptText="Enter registered staff email..." />
+                                       </children>
+                                    </VBox>
+
+                                    <VBox spacing="4.0">
+                                       <children>
+                                          <Label text="Password" textFill="#334155">
+                                             <font>
+                                                <Font name="System Bold" size="11.5" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="password" onAction="#onPasswordAction" prefHeight="38.0" promptText="Enter your password..." />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+
+                              <!-- Quick Demo One-Click Fill Pills -->
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label text="Quick Demo Sign-In:" textFill="#64748b">
+                                       <font>
+                                          <Font name="System Bold" size="10.5" />
+                                       </font>
+                                    </Label>
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnFillAdminOnAction" prefHeight="30.0" style="-fx-background-color: #fef3c7; -fx-text-fill: #92400e; -fx-font-weight: bold; -fx-background-radius: 15; -fx-border-color: #fde68a; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 3 12; -fx-font-size: 11px;" text="● Admin (Danapala)" HBox.hgrow="ALWAYS" />
+                                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnFillCashierOnAction" prefHeight="30.0" style="-fx-background-color: #ecfdf5; -fx-text-fill: #047857; -fx-font-weight: bold; -fx-background-radius: 15; -fx-border-color: #a7f3d0; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 3 12; -fx-font-size: 11px;" text="● Cashier (Gunapala)" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+
+                              <!-- Login Action Button -->
+                              <Button fx:id="btnLogin" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="42.0" styleClass="btn-primary" text="Sign In to Clothify ➔">
+                                 <font>
+                                    <Font name="System Bold" size="13.5" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+
+                              <!-- Actions / Links -->
+                              <HBox alignment="CENTER" spacing="14.0">
+                                 <children>
+                                    <Hyperlink onAction="#onSwitchToForgotPassword" style="-fx-border-color: transparent;" text="Forgot Password?" textFill="#d97706">
+                                       <font>
+                                          <Font name="System Bold" size="11.5" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Label text="•" textFill="#94a3b8" />
+                                    <Hyperlink onAction="#onSwitchToRegister" style="-fx-border-color: transparent;" text="Register Staff Account" textFill="#4f46e5">
+                                       <font>
+                                          <Font name="System Bold" size="11.5" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </HBox>
+
+                              <!-- Status footer -->
+                              <HBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <Circle fill="#10b981" radius="4.0" stroke="#10b981" strokeType="INSIDE" />
+                                    <Label text="Secured with SHA-256 Encryption &amp; MySQL 8.4" textFill="#94a3b8">
+                                       <font>
+                                          <Font size="10.5" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+
+                        <!-- ======================================================= -->
+                        <!-- VIEW 2: FORGOT / RESET PASSWORD (INLINE SAME CONTAINER) -->
+                        <!-- ======================================================= -->
+                        <VBox fx:id="paneForgotPassword" alignment="CENTER_LEFT" managed="false" spacing="12.0" visible="false">
+                           <children>
+                              <!-- Title & Header -->
+                              <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                 <children>
+                                    <StackPane prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #fffbeb; -fx-background-radius: 10; -fx-border-color: #fde68a; -fx-border-radius: 10;">
+                                       <children>
+                                          <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="❖" textFill="#d97706" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label styleClass="heading-title" text="Reset Account Password">
+                                             <font>
+                                                <Font name="Bodoni MT Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Enter registered staff email and set a new password" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.5" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <!-- Guidance Card -->
+                              <HBox alignment="CENTER_LEFT" spacing="8.0" style="-fx-background-color: #fffbeb; -fx-background-radius: 8; -fx-padding: 8 12; -fx-border-color: #fde68a; -fx-border-radius: 8;">
+                                 <children>
+                                    <Label text="★" textFill="#d97706" style="-fx-font-weight: bold; -fx-font-size: 13px;" />
+                                    <Label text="Verify your registered email address to instantly update your Clothify staff security password." textFill="#92400e" wrapText="true">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+
+                              <!-- Feedback Message Area -->
+                              <Label fx:id="lblResetMessage" minHeight="16.0" textFill="#dc2626" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="11.5" />
+                                 </font>
+                              </Label>
+
+                              <!-- Input Fields -->
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <VBox spacing="4.0">
+                                       <children>
+                                          <Label text="Registered Email Address" textFill="#334155">
+                                             <font>
+                                                <Font name="System Bold" size="11.5" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtResetEmail" prefHeight="38.0" promptText="e.g. staff@clothify.lk" />
+                                       </children>
+                                    </VBox>
+
+                                    <VBox spacing="4.0">
+                                       <children>
+                                          <Label text="New Password" textFill="#334155">
+                                             <font>
+                                                <Font name="System Bold" size="11.5" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="txtResetNewPass" prefHeight="38.0" promptText="Enter at least 3 characters..." />
+                                       </children>
+                                    </VBox>
+
+                                    <VBox spacing="4.0">
+                                       <children>
+                                          <Label text="Confirm New Password" textFill="#334155">
+                                             <font>
+                                                <Font name="System Bold" size="11.5" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="txtResetConfirmPass" prefHeight="38.0" promptText="Re-enter new password..." />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+
+                              <!-- Action Buttons -->
+                              <VBox spacing="8.0">
+                                 <children>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetPasswordOnAction" prefHeight="42.0" styleClass="btn-primary" text="Update Password ➔">
+                                       <font>
+                                          <Font name="System Bold" size="13.5" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Hyperlink onAction="#onSwitchToSignIn" style="-fx-border-color: transparent;" text="← Return to Sign In" textFill="#4f46e5">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Hyperlink>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+
+                        <!-- ======================================================== -->
+                        <!-- VIEW 3: REGISTER STAFF ACCOUNT (INLINE SAME CONTAINER)  -->
+                        <!-- ======================================================== -->
+                        <VBox fx:id="paneRegister" alignment="CENTER_LEFT" managed="false" spacing="10.0" visible="false">
+                           <children>
+                              <!-- Title & Header -->
+                              <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                 <children>
+                                    <StackPane prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #eef2ff; -fx-background-radius: 10; -fx-border-color: #c7d2fe; -fx-border-radius: 10;">
+                                       <children>
+                                          <Label text="❖" textFill="#4f46e5" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox>
+                                       <children>
+                                          <Label styleClass="heading-title" text="Register Boutique Staff">
+                                             <font>
+                                                <Font name="Bodoni MT Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Create a new authorized team account in Clothify" textFill="#64748b">
+                                             <font>
+                                                <Font size="11.5" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <!-- Feedback Message Area -->
+                              <Label fx:id="lblRegMessage" minHeight="16.0" textFill="#dc2626" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="11.5" />
+                                 </font>
+                              </Label>
+
+                              <!-- Input Fields -->
+                              <VBox spacing="8.0">
+                                 <children>
+                                    <VBox spacing="3.0">
+                                       <children>
+                                          <Label text="Full Name" textFill="#334155">
+                                             <font>
+                                                <Font name="System Bold" size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtRegName" prefHeight="35.0" promptText="e.g. Kasun Perera" />
+                                       </children>
+                                    </VBox>
+
+                                    <VBox spacing="3.0">
+                                       <children>
+                                          <Label text="Email Address" textFill="#334155">
+                                             <font>
+                                                <Font name="System Bold" size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtRegEmail" prefHeight="35.0" promptText="e.g. staff@clothify.lk" />
+                                       </children>
+                                    </VBox>
+
+                                    <HBox spacing="10.0">
+                                       <children>
+                                          <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label text="Assigned Role" textFill="#334155">
+                                                   <font>
+                                                      <Font name="System Bold" size="11.0" />
+                                                   </font>
+                                                </Label>
+                                                <ComboBox fx:id="cmbRegRole" maxWidth="1.7976931348623157E308" prefHeight="35.0" />
+                                             </children>
+                                          </VBox>
+                                          <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label text="Branch / City" textFill="#334155">
+                                                   <font>
+                                                      <Font name="System Bold" size="11.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="txtRegCity" prefHeight="35.0" promptText="Colombo" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+
+                                    <VBox spacing="3.0">
+                                       <children>
+                                          <Label text="Access Password" textFill="#334155">
+                                             <font>
+                                                <Font name="System Bold" size="11.0" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="txtRegPass" prefHeight="35.0" promptText="Enter secure password..." />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+
+                              <!-- Action Buttons -->
+                              <VBox spacing="6.0">
+                                 <children>
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="40.0" style="-fx-background-color: #4f46e5; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;" text="Create Boutique Account ➔">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Button>
+
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Hyperlink onAction="#onSwitchToSignIn" style="-fx-border-color: transparent;" text="← Return to Sign In" textFill="#4f46e5">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Hyperlink>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
-</Pane>
+</AnchorPane>

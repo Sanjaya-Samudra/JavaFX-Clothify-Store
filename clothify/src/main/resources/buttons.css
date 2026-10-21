@@ -1,98 +1,107 @@
+/* ==========================================================================
+   CLOTHIFY HAUTE COUTURE - BUTTONS SYSTEM (LIGHT THEME)
+   ========================================================================== */
+
 .add-button {
-    -fx-background-color: linear-gradient(to right, #43e97b, #38f9d7);
+    -fx-background-color: linear-gradient(to right, #10b981, #059669);
     -fx-text-fill: white;
-    -fx-background-radius: 10;
-    -fx-padding: 8 10;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.1, 0, 2);
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(gaussian, rgba(5, 150, 105, 0.25), 6, 0.1, 0, 2);
     -fx-cursor: hand;
-    -fx-transition: all 0.3s ease;
 }
 .add-button:hover {
-    -fx-background-color: linear-gradient(to right, #38f9d7, #43e97b);
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0.2, 0, 4);
+    -fx-background-color: linear-gradient(to right, #34d399, #047857);
+    -fx-effect: dropshadow(gaussian, rgba(5, 150, 105, 0.45), 10, 0.2, 0, 4);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
 }
 
 .update-button {
-    -fx-background-color: linear-gradient(to right, #56ccf2, #2f80ed);
+    -fx-background-color: linear-gradient(to right, #3b82f6, #1d4ed8);
     -fx-text-fill: white;
-    -fx-background-radius: 10;
-    -fx-padding: 8 10;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.1, 0, 2);
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(gaussian, rgba(29, 78, 216, 0.25), 6, 0.1, 0, 2);
     -fx-cursor: hand;
 }
 .update-button:hover {
-    -fx-background-color: linear-gradient(to right, #2f80ed, #56ccf2);
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 7, 0.2, 0, 4);
+    -fx-background-color: linear-gradient(to right, #60a5fa, #1e40af);
+    -fx-effect: dropshadow(gaussian, rgba(29, 78, 216, 0.45), 10, 0.2, 0, 4);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
 }
 
 .delete-button {
-    -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);
+    -fx-background-color: linear-gradient(to right, #ef4444, #b91c1c);
     -fx-text-fill: white;
-    -fx-background-radius: 10;
-    -fx-padding: 8 10;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0.2, 0, 3);
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(gaussian, rgba(185, 28, 28, 0.25), 6, 0.1, 0, 2);
     -fx-cursor: hand;
 }
 .delete-button:hover {
-    -fx-background-color: linear-gradient(to right, #ff4b2b, #ff416c);
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.3, 0, 5);
+    -fx-background-color: linear-gradient(to right, #f87171, #991b1b);
+    -fx-effect: dropshadow(gaussian, rgba(185, 28, 28, 0.45), 10, 0.2, 0, 4);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
 }
 
 .search-button {
-    -fx-background-color: linear-gradient(to right, #00c9ff, #92fe9d);
-    -fx-text-fill: black;
-    -fx-background-radius: 10;
-    -fx-padding: 8 10;
+    -fx-background-color: linear-gradient(to right, #0ea5e9, #0284c7);
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.1, 0, 2);
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(gaussian, rgba(2, 132, 199, 0.25), 6, 0.1, 0, 2);
     -fx-cursor: hand;
 }
 .search-button:hover {
-    -fx-background-color: linear-gradient(to right, #92fe9d, #00c9ff);
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 7, 0.2, 0, 4);
+    -fx-background-color: linear-gradient(to right, #38bdf8, #0369a1);
+    -fx-effect: dropshadow(gaussian, rgba(2, 132, 199, 0.45), 10, 0.2, 0, 4);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
 }
 
 .clear-button {
-    -fx-background-color: linear-gradient(to right, #f7971e, #ffd200);
-    -fx-text-fill: black;
-    -fx-background-radius: 10;
-    -fx-padding: 8 10;
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #334155;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.1, 0, 2);
+    -fx-font-size: 13px;
     -fx-cursor: hand;
 }
 .clear-button:hover {
-    -fx-background-color: linear-gradient(to right, #ffd200, #f7971e);
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0.2, 0, 3);
-}
-
-.cool-button {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 14px;
-    -fx-transition: all 0.3s ease;
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #0f172a;
+    -fx-border-color: #94a3b8;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
 }
 
 .browse-button {
-    -fx-background-color: #f0f0f0;
-    -fx-text-fill: #333;
+    -fx-background-color: #f8fafc;
+    -fx-text-fill: #334155;
     -fx-font-weight: 600;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-background-radius: 6;
     -fx-border-radius: 6;
-    -fx-border-color: #d3d3d3;
+    -fx-border-color: #cbd5e1;
     -fx-border-width: 1;
-    -fx-padding: 8 16;
+    -fx-padding: 6 14;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.03), 3, 0.1, 0, 1);
-    -fx-transition: all 0.3s ease;
 }
-
 .browse-button:hover {
-    -fx-background-color: #eaeaea;
-    -fx-border-color: #c0c0c0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0.2, 0, 2);
+    -fx-background-color: #e2e8f0;
+    -fx-border-color: #94a3b8;
 }
-

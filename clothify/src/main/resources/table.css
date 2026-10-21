@@ -1,26 +1,32 @@
+/* ==========================================================================
+   CLOTHIFY HAUTE COUTURE - TABLEVIEW (LIGHT THEME)
+   ========================================================================== */
+
 .table-view {
     -fx-background-color: #ffffff;
-    -fx-border-color: #dddddd;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
     -fx-table-cell-border-color: transparent;
-    -fx-padding: 5;
-    -fx-effect: none;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.04), 8, 0, 0, 2);
 }
 
 /* Column headers */
 .table-view .column-header-background {
-    -fx-background-color: #f2f2f2;
-    -fx-border-color: #dddddd;
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: #e2e8f0;
     -fx-border-width: 0 0 1 0;
+    -fx-background-radius: 8 8 0 0;
 }
 
 .table-view .column-header {
+    -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-font-size: 13px;
-    -fx-text-fill: #333333;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1e293b;
     -fx-alignment: CENTER_LEFT;
-    -fx-padding: 5 10;
+    -fx-padding: 8 12;
 }
 
 /* Zebra striping for rows */
@@ -28,23 +34,24 @@
     -fx-background-color: #ffffff;
 }
 .table-row-cell:odd {
-    -fx-background-color: #f9f9f9;
+    -fx-background-color: #f8fafc;
 }
 
 /* Row hover effect */
 .table-row-cell:hover {
-    -fx-background-color: #e6f0ff;
+    -fx-background-color: #fef3c7;
+    -fx-cursor: hand;
 }
 
 /* Selected row */
 .table-row-cell:focused, .table-row-cell:selected {
-    -fx-background-color: #cce5ff;
-    -fx-text-fill: #000000;
+    -fx-background-color: #fed7aa;
+    -fx-text-fill: #0f172a;
 }
 
 /* Cell content styling */
 .table-cell {
-    -fx-padding: 6 10;
+    -fx-padding: 8 12;
     -fx-font-size: 12px;
-    -fx-text-fill: #444444;
+    -fx-text-fill: #1e293b;
 }
