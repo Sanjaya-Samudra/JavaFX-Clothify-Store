@@ -292,22 +292,6 @@
                                  </children>
                               </VBox>
 
-                              <!-- Quick Demo One-Click Fill Pills -->
-                              <VBox spacing="4.0">
-                                 <children>
-                                    <Label text="Quick Demo Sign-In:" textFill="#64748b">
-                                       <font>
-                                          <Font name="System Bold" size="10.5" />
-                                       </font>
-                                    </Label>
-                                    <HBox spacing="10.0">
-                                       <children>
-                                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnFillAdminOnAction" prefHeight="30.0" style="-fx-background-color: #fef3c7; -fx-text-fill: #92400e; -fx-font-weight: bold; -fx-background-radius: 15; -fx-border-color: #fde68a; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 3 12; -fx-font-size: 11px;" text="● Admin (Danapala)" HBox.hgrow="ALWAYS" />
-                                          <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnFillCashierOnAction" prefHeight="30.0" style="-fx-background-color: #ecfdf5; -fx-text-fill: #047857; -fx-font-weight: bold; -fx-background-radius: 15; -fx-border-color: #a7f3d0; -fx-border-radius: 15; -fx-cursor: hand; -fx-padding: 3 12; -fx-font-size: 11px;" text="● Cashier (Gunapala)" HBox.hgrow="ALWAYS" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
 
                               <!-- Login Action Button -->
                               <Button fx:id="btnLogin" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="42.0" styleClass="btn-primary" text="Sign In to Clothify ➔">

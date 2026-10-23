@@ -11,6 +11,7 @@ public class CheckDatabase {
         try {
             Connection conn = DBConnection.getInstance().getConnection();
             System.out.println("DB Connection Successful!");
+            db.DBInitializer.initializeDatabase();
             
             // Ensure image column is LONGBLOB to support high-resolution photos
             try (Statement s = conn.createStatement()) {
@@ -24,6 +25,12 @@ public class CheckDatabase {
             while (rs.next()) {
                 String tableName = rs.getString("TABLE_NAME");
                 System.out.println("TABLE: " + tableName);
+            }
+
+            try (Statement s = conn.createStatement(); ResultSet crs = s.executeQuery("DESC user")) {
+                while (crs.next()) {
+                    System.out.println("COL: " + crs.getString("Field") + " - " + crs.getString("Type"));
+                }
             }
 
             // Check users

@@ -41,7 +41,13 @@ public class DBInitializer {
                 ensureColumnExists(conn, "user", "status", "VARCHAR(20) NOT NULL DEFAULT 'ACTIVE'");
                 ensureColumnExists(conn, "user", "permissions", "VARCHAR(255) NOT NULL DEFAULT 'ORDER,PRODUCT,REPORT'");
                 try {
+                    stmt.executeUpdate("ALTER TABLE user MODIFY COLUMN id VARCHAR(20) NOT NULL");
+                    stmt.executeUpdate("ALTER TABLE user MODIFY COLUMN email VARCHAR(100) NOT NULL");
                     stmt.executeUpdate("ALTER TABLE user MODIFY COLUMN password VARCHAR(255) NOT NULL");
+                    stmt.executeUpdate("ALTER TABLE user MODIFY COLUMN name VARCHAR(100) NOT NULL");
+                    stmt.executeUpdate("ALTER TABLE user MODIFY COLUMN address VARCHAR(255)");
+                    stmt.executeUpdate("ALTER TABLE user MODIFY COLUMN city VARCHAR(50)");
+                    stmt.executeUpdate("ALTER TABLE user MODIFY COLUMN province VARCHAR(50)");
                 } catch (Exception ignored) {}
                 try {
                     stmt.executeUpdate("UPDATE user SET permissions='ORDER,PRODUCT,REPORT,EMPLOYEE,SUPPLIER,USER' WHERE role='ADMIN' AND (permissions IS NULL OR permissions='ORDER,PRODUCT,REPORT')");
@@ -124,8 +130,13 @@ public class DBInitializer {
                         "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                         ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
 
-                // Seed default admin and cashier if user table is empty
-                try (ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM user")) {
+                // Remove legacy test dummy users
+                try {
+                    stmt.executeUpdate("DELETE FROM user WHERE email IN ('one@gmail.com', 'two@gmail.com')");
+                } catch (Exception ignored) {}
+
+                // Seed default admin and cashier if user table has no administrator
+                try (ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM user WHERE role='ADMIN'")) {
                     if (rs.next() && rs.getInt(1) == 0) {
                         String adminPassHash = PasswordSecurity.hashPassword("admin123");
                         String cashierPassHash = PasswordSecurity.hashPassword("cashier123");

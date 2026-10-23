@@ -63,7 +63,7 @@
                               <Font name="System Bold" size="11.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtName" prefHeight="36.0" promptText="e.g. Danapala Senanayake" />
+                        <TextField fx:id="txtName" prefHeight="36.0" promptText="e.g. Alexander Vance" />
                      </children>
                   </VBox>
 

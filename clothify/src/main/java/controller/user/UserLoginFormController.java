@@ -155,26 +155,6 @@ public class UserLoginFormController {
         }
     }
 
-    // === Quick Demo Sign-In Handlers ===
-
-    @FXML
-    void btnFillAdminOnAction(ActionEvent event) {
-        selectedRole = "ADMIN";
-        updateRoleSelectorUI();
-        if (email != null) email.setText("one@gmail.com");
-        if (password != null) password.setText("one");
-        if (lblMessage != null) lblMessage.setText("");
-    }
-
-    @FXML
-    void btnFillCashierOnAction(ActionEvent event) {
-        selectedRole = "CASHIER";
-        updateRoleSelectorUI();
-        if (email != null) email.setText("two@gmail.com");
-        if (password != null) password.setText("two");
-        if (lblMessage != null) lblMessage.setText("");
-    }
-
     @FXML
     void onPasswordAction(ActionEvent event) {
         btnLoginOnAction(event);

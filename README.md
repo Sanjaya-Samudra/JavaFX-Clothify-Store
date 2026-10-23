@@ -12,7 +12,7 @@
 - **Role-Based Access Control (RBAC)**: Distinguishes between **Admin** (`ADMIN`) and **Cashier / Staff** (`CASHIER`).
 - **Interactive Password Recovery**: "Forgot Password?" verification dialog allowing instant password reset.
 - **Account Registration**: Self-service staff registration modal.
-- **Quick Demo Mode**: One-click fill pills for immediate evaluation (`Admin: one@gmail.com / one`, `Cashier: two@gmail.com / two`).
+- **Executive Role Selection**: Direct toggle between **Administrator** and **Cashier** secure sign-in views.
 
 ### 2. 📊 Executive Dashboard & Live Analytics
 - **Live KPI Counters**: Real-time Gross Sales today, Orders processed today, Active SKUs, and Low Stock alerts.
@@ -113,8 +113,7 @@ mvn clean compile
 
 | Role | Email | Password | Access Rights |
 | :--- | :--- | :--- | :--- |
-| **👑 Admin** | `one@gmail.com` | `one` | Full system access (POS, Inventory, Staff, Suppliers, Reports, Users) |
-| **💳 Cashier** | `two@gmail.com` | `two` | Point of Sale, Catalog browse, Orders, Returns, Receipts |
-| **👑 System Admin** | `admin@clothify.com` | `admin123` | Full enterprise administrator privileges |
+| **👑 System Admin** | `admin@clothify.com` | `admin123` | Full enterprise administrator privileges (POS, Inventory, Staff, Suppliers, Reports, Users) |
+| **💳 Cashier** | `cashier@clothify.com` | `cashier123` | Point of Sale, Catalog browse, Orders, Returns, Receipts |
 
 *(Note: The system automatically migrates legacy passwords to salted SHA-256 hashes upon login)*

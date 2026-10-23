@@ -60,8 +60,8 @@ echo [*] Generating distribution instructions...
     echo Double-click 'Clothify.bat' to launch the application.
     echo.
     echo DEFAULT CREDENTIALS:
-    echo - Administrator: one@gmail.com / one
-    echo - Cashier:       two@gmail.com / two
+    echo - Administrator: admin@clothify.com / admin123
+    echo - Cashier:       cashier@clothify.com / cashier123
     echo.
     echo =====================================================================
 ) > "%DIST_DIR%\README.txt"
