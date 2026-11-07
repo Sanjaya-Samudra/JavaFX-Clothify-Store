@@ -62,7 +62,16 @@ namespace Clothify
                 psi.UseShellExecute = false;
                 psi.CreateNoWindow = true;
 
-                Process.Start(psi);
+                Process proc = Process.Start(psi);
+                if (proc != null)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    if (proc.HasExited && proc.ExitCode != 0)
+                    {
+                        MessageBox.Show("Clothify Store failed to launch (Exit code: " + proc.ExitCode + ").\n\nPlease launch 'run.bat' in the same folder to see the detailed console log.",
+                            "Launch Warning - Clothify Store", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
             catch (Exception ex)
             {

@@ -44,7 +44,7 @@ $distJre = Join-Path $distPath "jre"
 
 if ((Test-Path $jlinkExe) -and (Test-Path $jmodsPath)) {
     Write-Host ">>> Bundling ultra-compact embedded Java 11 runtime..." -ForegroundColor Yellow
-    $modules = "java.base,java.desktop,java.sql,java.naming,java.management,java.xml,java.logging,jdk.unsupported,jdk.crypto.ec,jdk.crypto.cryptoki,java.security.sasl,java.security.jgss"
+    $modules = "java.se,jdk.unsupported,jdk.crypto.ec,jdk.crypto.cryptoki,jdk.crypto.mscapi,jdk.localedata"
     & $jlinkExe --module-path $jmodsPath --add-modules $modules --strip-debug --no-man-pages --no-header-files --compress=2 --output $distJre
     Write-Host ">>> Embedded JRE bundled successfully! (Clients do not need Java installed)" -ForegroundColor Green
 }
