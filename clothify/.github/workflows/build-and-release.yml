@@ -1,0 +1,66 @@
+name: Build and Release Clothify Store
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
+
+      - name: Prepare Release Bundle
+        run: |
+          New-Item -ItemType Directory -Force -Path dist\config
+          Copy-Item target\clothify-*-jar-with-dependencies.jar dist\clothify-app.jar
+          Copy-Item config\database.properties.example dist\config\database.properties
+          Copy-Item run.bat dist\run.bat
+          if (Test-Path clothify.vbs) { Copy-Item clothify.vbs dist\clothify.vbs }
+          
+          # Create quickstart guide in distribution
+          @"
+          ==================================================
+              Clothify Store - Haute Couture POS & ERP
+          ==================================================
+
+          HOW TO RUN:
+          1. Make sure Java 11 or higher is installed (e.g. from adoptium.net).
+          2. Open 'config/database.properties' to configure your database host, user, and password.
+          3. Double-click 'clothify.vbs' or 'run.bat' to launch the system!
+
+          Default Seed Accounts:
+          - Admin:   admin@clothify.com   / admin123
+          - Cashier: cashier@clothify.com / cashier123
+          ==================================================
+          "@ | Out-File -FilePath dist\README.txt -Encoding utf8
+
+          Compress-Archive -Path dist\* -DestinationPath Clothify-Store-Windows.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            Clothify-Store-Windows.zip
+            target/clothify-*-jar-with-dependencies.jar
+          draft: false
+          prerelease: false
+          generate_release_notes: true

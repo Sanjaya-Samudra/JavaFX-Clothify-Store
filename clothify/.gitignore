@@ -1,4 +1,6 @@
 target/
+dist/
+*.zip
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -36,3 +38,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Sensitive Database Credentials & Local Config ###
+config/database.properties
+*.env
+*.key
+*.pem

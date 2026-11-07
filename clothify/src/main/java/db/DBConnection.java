@@ -81,7 +81,7 @@ public class DBConnection {
 
     public synchronized Connection getConnection() {
         try {
-            if (connection == null || connection.isClosed() || !connection.isValid(2)) {
+            if (connection == null || connection.isClosed() || !connection.isValid(5)) {
                 closeQuietly();
                 connect();
             }
@@ -96,7 +96,7 @@ public class DBConnection {
             instance = new DBConnection();
         } else {
             try {
-                if (instance.connection.isClosed() || !instance.connection.isValid(2)) {
+                if (instance.connection.isClosed() || !instance.connection.isValid(5)) {
                     instance.closeQuietly();
                     instance = new DBConnection();
                 }
