@@ -44,3 +44,4 @@ config/database.properties
 *.env
 *.key
 *.pem
+clothify.exe

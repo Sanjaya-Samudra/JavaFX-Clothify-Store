@@ -30,10 +30,15 @@ jobs:
       - name: Build with Maven
         run: mvn clean package -DskipTests
 
+      - name: Compile Native Windows Executable (clothify.exe)
+        run: |
+          & C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /out:clothify.exe /win32icon:src\main\resources\Images\clothify.ico ClothifyLauncher.cs
+
       - name: Prepare Release Bundle
         run: |
           New-Item -ItemType Directory -Force -Path dist\config
           Copy-Item target\clothify-*-jar-with-dependencies.jar dist\clothify-app.jar
+          Copy-Item clothify.exe dist\clothify.exe
           Copy-Item config\database.properties.example dist\config\database.properties
           Copy-Item run.bat dist\run.bat
           if (Test-Path clothify.vbs) { Copy-Item clothify.vbs dist\clothify.vbs }
@@ -44,9 +49,9 @@ jobs:
           ==================================================
 
           HOW TO RUN:
-          1. Make sure Java 11 or higher is installed (e.g. from adoptium.net).
+          1. Double-click 'clothify.exe' to launch directly!
           2. Open 'config/database.properties' to configure your database host, user, and password.
-          3. Double-click 'clothify.vbs' or 'run.bat' to launch the system!
+          3. Or double-click 'clothify.vbs' or 'run.bat'.
 
           Default Seed Accounts:
           - Admin:   admin@clothify.com   / admin123
@@ -61,6 +66,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
+            clothify/clothify.exe
             clothify/Clothify-Store-Windows.zip
             clothify/target/clothify-*-jar-with-dependencies.jar
           draft: false

@@ -130,9 +130,14 @@ public class UserLoginFormController {
     private void updateRoleSelectorUI() {
         if (btnRoleAdmin == null || btnRoleCashier == null || lblRoleDesc == null) return;
 
+        btnRoleAdmin.setStyle(null);
+        btnRoleCashier.setStyle(null);
+        btnRoleAdmin.getStyleClass().removeAll("role-btn-admin-active", "role-btn-cashier-active", "role-btn-inactive");
+        btnRoleCashier.getStyleClass().removeAll("role-btn-admin-active", "role-btn-cashier-active", "role-btn-inactive");
+
         if ("ADMIN".equalsIgnoreCase(selectedRole)) {
-            btnRoleAdmin.setStyle("-fx-background-color: #0f172a; -fx-text-fill: #f59e0b; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #f59e0b; -fx-border-radius: 8; -fx-cursor: hand;");
-            btnRoleCashier.setStyle("-fx-background-color: #f1f5f9; -fx-text-fill: #64748b; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-cursor: hand;");
+            btnRoleAdmin.getStyleClass().add("role-btn-admin-active");
+            btnRoleCashier.getStyleClass().add("role-btn-inactive");
             if (svgRoleAdminIcon != null) {
                 svgRoleAdminIcon.setFill(Color.web("#f59e0b"));
             }
@@ -142,8 +147,8 @@ public class UserLoginFormController {
             lblRoleDesc.setText("Atelier Executive Access • Full ERP Control, Reports, Staff & User Hub");
             lblRoleDesc.setStyle("-fx-background-color: #fef3c7; -fx-text-fill: #92400e; -fx-padding: 4 10; -fx-background-radius: 6; -fx-border-color: #fde68a; -fx-border-radius: 6; -fx-font-size: 11px; -fx-font-weight: bold;");
         } else {
-            btnRoleAdmin.setStyle("-fx-background-color: #f1f5f9; -fx-text-fill: #64748b; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-cursor: hand;");
-            btnRoleCashier.setStyle("-fx-background-color: #0f172a; -fx-text-fill: #10b981; -fx-font-weight: bold; -fx-background-radius: 8; -fx-border-color: #10b981; -fx-border-radius: 8; -fx-cursor: hand;");
+            btnRoleAdmin.getStyleClass().add("role-btn-inactive");
+            btnRoleCashier.getStyleClass().add("role-btn-cashier-active");
             if (svgRoleAdminIcon != null) {
                 svgRoleAdminIcon.setFill(Color.web("#64748b"));
             }

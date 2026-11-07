@@ -550,7 +550,7 @@
                               <!-- Action Buttons -->
                               <VBox spacing="6.0">
                                  <children>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="40.0" style="-fx-background-color: #4f46e5; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;" text="Create Boutique Account ➔">
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="40.0" styleClass="btn-indigo" text="Create Boutique Account ➔">
                                        <font>
                                           <Font size="13.0" />
                                        </font>

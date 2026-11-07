@@ -260,6 +260,37 @@
     -fx-background-color: #e2e8f0;
     -fx-text-fill: #0f172a;
     -fx-border-color: #94a3b8;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.15), 8, 0, 0, 2);
+}
+
+.btn-outline:hover {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #0f172a;
+    -fx-border-color: #64748b;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.12), 6, 0, 0, 2);
+}
+
+.btn-outline-blue {
+    -fx-background-color: #eff6ff;
+    -fx-text-fill: #1d4ed8;
+    -fx-border-color: #bfdbfe;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 0 12;
+}
+.btn-outline-blue:hover {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1e40af;
+    -fx-border-color: #3b82f6;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.3), 8, 0, 0, 2);
 }
 
 .btn-outline {
@@ -479,4 +510,55 @@
 .axis-label {
     -fx-text-fill: #334155;
     -fx-font-weight: bold;
+}
+
+/* Role Selector Buttons in Login */
+.role-btn-admin-active {
+    -fx-background-color: #0f172a;
+    -fx-text-fill: #f59e0b;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-color: #f59e0b;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+}
+.role-btn-admin-active:hover {
+    -fx-background-color: #1e293b;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.4), 10, 0, 0, 2);
+}
+
+.role-btn-cashier-active {
+    -fx-background-color: #0f172a;
+    -fx-text-fill: #10b981;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-color: #10b981;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+}
+.role-btn-cashier-active:hover {
+    -fx-background-color: #1e293b;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.4), 10, 0, 0, 2);
+}
+
+.role-btn-inactive {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #64748b;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+}
+.role-btn-inactive:hover {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #0f172a;
+    -fx-border-color: #cbd5e1;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.12), 8, 0, 0, 2);
 }

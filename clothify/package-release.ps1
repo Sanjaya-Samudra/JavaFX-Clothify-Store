@@ -1,6 +1,6 @@
 # ==============================================================================
 # Clothify Store - Local Production Package Builder
-# Packages the standalone application bundle into a distributable ZIP archive
+# Packages the standalone application bundle into a distributable ZIP & EXE
 # ==============================================================================
 
 Write-Host ">>> Building Clothify Store production package..." -ForegroundColor Cyan
@@ -14,7 +14,20 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-# 2. Setup Distribution Directory
+# 2. Compile native clothify.exe
+Write-Host ">>> Compiling native Windows executable (clothify.exe)..." -ForegroundColor Yellow
+$cscPath = "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe"
+if (Test-Path $cscPath) {
+    $outArg = "/out:$PSScriptRoot\clothify.exe"
+    $icoArg = "/win32icon:$PSScriptRoot\src\main\resources\Images\clothify.ico"
+    $srcArg = "$PSScriptRoot\ClothifyLauncher.cs"
+    & $cscPath /target:winexe $outArg $icoArg $srcArg | Out-Null
+    Write-Host ">>> clothify.exe compiled with official fashion logo icon!" -ForegroundColor Green
+} else {
+    Write-Host "CSC compiler not found; skipping .exe build." -ForegroundColor Yellow
+}
+
+# 3. Setup Distribution Directory
 $distPath = Join-Path $PSScriptRoot "dist"
 if (Test-Path $distPath) {
     try {
@@ -23,7 +36,7 @@ if (Test-Path $distPath) {
 }
 New-Item -ItemType Directory -Force -Path (Join-Path $distPath "config") | Out-Null
 
-# 3. Copy Artefacts
+# 4. Copy Artefacts
 Write-Host ">>> Copying artifacts..." -ForegroundColor Yellow
 $jarFile = Get-ChildItem -Path (Join-Path $PSScriptRoot "target") -Filter "clothify-*-jar-with-dependencies.jar" | Select-Object -First 1
 
@@ -33,6 +46,10 @@ if ($null -eq $jarFile) {
 }
 
 Copy-Item $jarFile.FullName (Join-Path $distPath "clothify-app.jar") -Force
+
+if (Test-Path (Join-Path $PSScriptRoot "clothify.exe")) {
+    Copy-Item (Join-Path $PSScriptRoot "clothify.exe") (Join-Path $distPath "clothify.exe") -Force
+}
 
 if (Test-Path (Join-Path $PSScriptRoot "config\database.properties")) {
     Copy-Item (Join-Path $PSScriptRoot "config\database.properties") (Join-Path $distPath "config\database.properties") -Force
@@ -62,24 +79,23 @@ if errorlevel 1 (
                     Clothify Store - POS & ERP System
 ==============================================================================
 
+LAUNCH INSTRUCTIONS:
+- Double-click 'clothify.exe' to launch the application directly!
+- Or double-click 'clothify.vbs' / 'run.bat'.
+
 REQUIREMENTS:
-- Java 11 or higher (Free download from https://adoptium.net / Eclipse Temurin)
-- MySQL database (Local MySQL or Free Cloud Database such as TiDB or Aiven)
+- Windows 10 / 11
+- Java 11 or higher (Free download from https://adoptium.net)
+- Configured with live TiDB Cloud Database
 
-QUICK START:
-1. Open 'config/database.properties' in any text editor if you need to update DB settings.
-2. Run the system:
-   - Double-click 'clothify.vbs' for silent launch (no black console window).
-   - Or double-click 'run.bat' for console mode with logs.
-
-DEFAULT CREDENTIALS (Auto-generated on first run):
+DEFAULT CREDENTIALS (Pre-seeded):
 - Administrator: admin@clothify.com   / admin123
 - Cashier:       cashier@clothify.com / cashier123
 
 ==============================================================================
 "@ | Out-File -FilePath (Join-Path $distPath "README.txt") -Encoding utf8
 
-# 4. Create ZIP
+# 5. Create ZIP
 $zipPath = Join-Path $PSScriptRoot "Clothify-Store-v1.0.zip"
 if (Test-Path $zipPath) {
     try {
@@ -92,6 +108,6 @@ Compress-Archive -Path "$distPath\*" -DestinationPath $zipPath -Force
 
 Write-Host "==========================================================" -ForegroundColor Green
 Write-Host " Production bundle created successfully!" -ForegroundColor Green
-Write-Host " Output: $zipPath" -ForegroundColor Green
-Write-Host " You can now distribute this ZIP or upload it to GitHub Releases!" -ForegroundColor Green
+Write-Host " - Standalone Executable: $(Join-Path $PSScriptRoot 'clothify.exe')" -ForegroundColor Green
+Write-Host " - Release ZIP Archive:   $zipPath" -ForegroundColor Green
 Write-Host "==========================================================" -ForegroundColor Green

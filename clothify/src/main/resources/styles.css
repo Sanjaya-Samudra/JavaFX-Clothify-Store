@@ -241,3 +241,126 @@
     -fx-text-fill: #78350f;
     -fx-font-weight: bold;
 }
+/* ==========================================================================
+   BOTTOM DOCK BAR BUTTONS & INTERACTIVE HOVER FEEDBACK
+   ========================================================================== */
+.dock-bar-btn {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #334155;
+    -fx-background-radius: 16;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 16;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 5 16;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.05), 4, 0, 0, 1);
+}
+.dock-bar-btn:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #0f172a;
+    -fx-border-color: #f59e0b;
+    -fx-border-width: 1.5;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.35), 10, 0.2, 0, 3);
+}
+
+.dock-bar-btn-blue {
+    -fx-background-color: #eff6ff;
+    -fx-text-fill: #1d4ed8;
+    -fx-background-radius: 16;
+    -fx-border-color: #bfdbfe;
+    -fx-border-radius: 16;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 5 16;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(29, 78, 216, 0.08), 4, 0, 0, 1);
+}
+.dock-bar-btn-blue:hover {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1e40af;
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 1.5;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.35), 10, 0.2, 0, 3);
+}
+
+.dock-bar-btn-emerald {
+    -fx-background-color: #ecfdf5;
+    -fx-text-fill: #065f46;
+    -fx-background-radius: 16;
+    -fx-border-color: #a7f3d0;
+    -fx-border-radius: 16;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 5 16;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(5, 150, 105, 0.08), 4, 0, 0, 1);
+}
+.dock-bar-btn-emerald:hover {
+    -fx-background-color: #d1fae5;
+    -fx-text-fill: #047857;
+    -fx-border-color: #10b981;
+    -fx-border-width: 1.5;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.35), 10, 0.2, 0, 3);
+}
+
+/* Card Action Launch Buttons */
+.card-action-btn-amber {
+    -fx-background-color: #fef3c7;
+    -fx-text-fill: #92400e;
+    -fx-background-radius: 8;
+    -fx-border-color: #fde68a;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+.card-action-btn-amber:hover {
+    -fx-background-color: #fde68a;
+    -fx-text-fill: #78350f;
+    -fx-border-color: #f59e0b;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(gaussian, rgba(245, 158, 11, 0.3), 10, 0.15, 0, 3);
+}
+
+.card-action-btn-emerald {
+    -fx-background-color: #ecfdf5;
+    -fx-text-fill: #065f46;
+    -fx-background-radius: 8;
+    -fx-border-color: #a7f3d0;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+.card-action-btn-emerald:hover {
+    -fx-background-color: #d1fae5;
+    -fx-text-fill: #047857;
+    -fx-border-color: #10b981;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.3), 10, 0.15, 0, 3);
+}
+
+.card-action-btn-blue {
+    -fx-background-color: #eff6ff;
+    -fx-text-fill: #1d4ed8;
+    -fx-background-radius: 8;
+    -fx-border-color: #bfdbfe;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+.card-action-btn-blue:hover {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1e40af;
+    -fx-border-color: #3b82f6;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.3), 10, 0.15, 0, 3);
+}

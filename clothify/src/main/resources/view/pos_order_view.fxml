@@ -45,7 +45,7 @@
                            </children>
                         </VBox>
                         <ComboBox fx:id="cmbCategoryFilter" onAction="#onCategoryFilterChanged" prefHeight="38.0" prefWidth="160.0" promptText="All Categories" />
-                        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#btnViewOrderHistoryOnAction" prefHeight="38.0" style="-fx-background-color: #eff6ff; -fx-text-fill: #1d4ed8; -fx-border-color: #bfdbfe; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 0 12;" text="Placed Orders" />
+                        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#btnViewOrderHistoryOnAction" prefHeight="38.0" styleClass="btn-outline-blue" text="Placed Orders" />
                      </children>
                   </HBox>
 
@@ -95,7 +95,7 @@
                         <Button mnemonicParsing="false" onAction="#btnQuickAddTwo" prefHeight="34.0" styleClass="btn-secondary" text="+2" />
                         <Button mnemonicParsing="false" onAction="#btnQuickAddFive" prefHeight="34.0" styleClass="btn-secondary" text="+5" />
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button fx:id="btnAddToCart" mnemonicParsing="false" onAction="#btnAddSelectedItemToCart" prefHeight="34.0" style="-fx-background-color: #059669; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 0 16;" text="🛒 Add Item to Cart ➔" />
+                        <Button fx:id="btnAddToCart" mnemonicParsing="false" onAction="#btnAddSelectedItemToCart" prefHeight="34.0" styleClass="btn-success" text="🛒 Add Item to Cart ➔" />
                      </children>
                   </HBox>
                </children>
