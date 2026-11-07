@@ -17,8 +17,12 @@ ElseIf fso.FileExists(scriptDir & "\clothify-1.0-SNAPSHOT-jar-with-dependencies.
 End If
 
 If jarFile <> "" Then
+    javaCmd = "javaw"
+    If fso.FileExists(scriptDir & "\jre\bin\javaw.exe") Then
+        javaCmd = """" & scriptDir & "\jre\bin\javaw.exe"""
+    End If
     WshShell.CurrentDirectory = scriptDir
-    WshShell.Run "javaw -Xms256m -Xmx1024m -jar """ & jarFile & """", 0, False
+    WshShell.Run javaCmd & " -Xms256m -Xmx1024m -jar """ & jarFile & """", 0, False
 Else
     MsgBox "Could not find Clothify executable JAR file." & vbCrLf & "Please run 'mvn clean package' first or check the installation folder.", vbCritical, "Clothify Store Launcher"
 End If
