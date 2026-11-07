@@ -589,12 +589,39 @@ public class PosOrderController implements Initializable {
             javafx.scene.Scene scene = new javafx.scene.Scene(root);
             stage.setScene(scene);
             stage.setTitle("Clothify - Order Records & Transaction History");
+
+            try {
+                java.io.InputStream is = getClass().getResourceAsStream("/Images/logo-background-removed-nav.png");
+                if (is != null) {
+                    stage.getIcons().add(new javafx.scene.image.Image(is));
+                }
+            } catch (Exception ignored) {}
+
             util.WindowUtil.centerInVisualBounds(stage, 1120, 720);
-            stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+
+            javafx.stage.Window owner = (tblCatalog != null && tblCatalog.getScene() != null) ? tblCatalog.getScene().getWindow() : null;
+            if (owner != null) {
+                stage.initOwner(owner);
+                stage.initModality(javafx.stage.Modality.WINDOW_MODAL);
+            } else {
+                stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+            }
+
             stage.showAndWait();
 
-            // Refresh catalog in case returns or adjustments were made
-            loadCatalog();
+            if (owner != null) {
+                owner.requestFocus();
+            }
+
+            // Refresh catalog in background thread so POS never hangs
+            java.util.concurrent.CompletableFuture.runAsync(() -> {
+                var freshCatalog = itemService.getAllItems();
+                javafx.application.Platform.runLater(() -> {
+                    catalogMasterList = freshCatalog;
+                    tblCatalog.setItems(catalogMasterList);
+                    filterCatalog();
+                });
+            });
         } catch (Exception e) {
             e.printStackTrace();
             AlertUtil.showError("Navigation Error", "Could not load Order History: " + e.getMessage());
@@ -605,6 +632,20 @@ public class PosOrderController implements Initializable {
         Dialog<ButtonType> receiptDialog = new Dialog<>();
         receiptDialog.setTitle("Invoice Receipt • " + order.getOrderId());
         receiptDialog.setHeaderText("Order Completed Successfully!");
+
+        javafx.stage.Window owner = (tblCatalog != null && tblCatalog.getScene() != null) ? tblCatalog.getScene().getWindow() : null;
+        if (owner != null) {
+            receiptDialog.initOwner(owner);
+            receiptDialog.initModality(javafx.stage.Modality.WINDOW_MODAL);
+        }
+
+        try {
+            if (receiptDialog.getDialogPane().getScene() != null && receiptDialog.getDialogPane().getScene().getWindow() instanceof javafx.stage.Stage) {
+                javafx.stage.Stage st = (javafx.stage.Stage) receiptDialog.getDialogPane().getScene().getWindow();
+                java.io.InputStream is = getClass().getResourceAsStream("/Images/logo-background-removed-nav.png");
+                if (is != null) st.getIcons().add(new javafx.scene.image.Image(is));
+            }
+        } catch (Exception ignored) {}
 
         TextArea area = new TextArea(ReceiptGenerator.generateFormattedTextReceipt(order));
         area.setEditable(false);
@@ -617,6 +658,12 @@ public class PosOrderController implements Initializable {
         ButtonType viewOrdersBtn = new ButtonType("📜 View Placed Orders", ButtonBar.ButtonData.HELP_2);
         receiptDialog.getDialogPane().getButtonTypes().addAll(copyBtn, printBtn, viewOrdersBtn, ButtonType.CLOSE);
         receiptDialog.getDialogPane().setContent(area);
+
+        receiptDialog.setOnHidden(e -> {
+            if (owner != null) {
+                owner.requestFocus();
+            }
+        });
 
         receiptDialog.showAndWait().ifPresent(btn -> {
             if (btn == copyBtn) {

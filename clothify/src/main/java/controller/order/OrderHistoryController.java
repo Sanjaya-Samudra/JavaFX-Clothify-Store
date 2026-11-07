@@ -258,6 +258,11 @@ public class OrderHistoryController implements Initializable {
         List<OrderDetail> details = orderService.getOrderDetails(selected.getOrderId());
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Order Details • " + selected.getOrderId());
+        javafx.stage.Window owner = (tblOrders != null && tblOrders.getScene() != null) ? tblOrders.getScene().getWindow() : null;
+        if (owner != null) {
+            dialog.initOwner(owner);
+            dialog.initModality(javafx.stage.Modality.WINDOW_MODAL);
+        }
 
         VBox contentBox = new VBox(14);
         contentBox.setPadding(new Insets(16, 18, 16, 18));
@@ -407,6 +412,11 @@ public class OrderHistoryController implements Initializable {
 
         Dialog<ButtonType> receiptDialog = new Dialog<>();
         receiptDialog.setTitle("Reprint Receipt • " + fullOrder.getOrderId());
+        javafx.stage.Window owner = (tblOrders != null && tblOrders.getScene() != null) ? tblOrders.getScene().getWindow() : null;
+        if (owner != null) {
+            receiptDialog.initOwner(owner);
+            receiptDialog.initModality(javafx.stage.Modality.WINDOW_MODAL);
+        }
         receiptDialog.setHeaderText("Clothify Thermal Receipt");
 
         TextArea area = new TextArea(ReceiptGenerator.generateFormattedTextReceipt(fullOrder));
@@ -449,6 +459,11 @@ public class OrderHistoryController implements Initializable {
 
         Dialog<OrderReturn> dialog = new Dialog<>();
         dialog.setTitle("Process Order Return & Restock");
+        javafx.stage.Window owner = (tblOrders != null && tblOrders.getScene() != null) ? tblOrders.getScene().getWindow() : null;
+        if (owner != null) {
+            dialog.initOwner(owner);
+            dialog.initModality(javafx.stage.Modality.WINDOW_MODAL);
+        }
         dialog.setHeaderText("Order #" + selected.getOrderId() + " - Return Item & Issue Refund");
 
         ButtonType confirmReturn = new ButtonType("Process Return & Restock", ButtonBar.ButtonData.OK_DONE);

@@ -2,6 +2,7 @@ package util;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -19,16 +20,34 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 
 import java.io.InputStream;
 import java.util.Optional;
+import java.util.concurrent.FutureTask;
 
 /**
  * Luxury Haute Couture Alert & Dialog System for Clothify.
  * Features vector SVG badges, soft card elevation, polished typography,
- * and eliminates duplicate icons or unrendered emoji boxes on Windows.
+ * explicit window ownership, safe modality release, and eliminates duplicate icons or unrendered emoji boxes on Windows.
  */
 public class AlertUtil {
+
+    public static Window getActiveWindow() {
+        try {
+            for (Window window : Window.getWindows()) {
+                if (window.isShowing() && window.isFocused()) {
+                    return window;
+                }
+            }
+            for (Window window : Window.getWindows()) {
+                if (window.isShowing() && window instanceof Stage) {
+                    return window;
+                }
+            }
+        } catch (Exception ignored) {}
+        return null;
+    }
 
     public static void showSuccess(String title, String message) {
         showCustomDialog(
@@ -79,15 +98,33 @@ public class AlertUtil {
     }
 
     public static boolean showConfirmation(String title, String header, String content) {
+        if (!javafx.application.Platform.isFxApplicationThread()) {
+            try {
+                FutureTask<Boolean> task = new FutureTask<>(() -> showConfirmation(title, header, content));
+                javafx.application.Platform.runLater(task);
+                return task.get();
+            } catch (Exception e) {
+                return false;
+            }
+        }
+
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.initStyle(StageStyle.DECORATED);
-        alert.initModality(Modality.APPLICATION_MODAL);
+
+        Window owner = getActiveWindow();
+        if (owner != null) {
+            alert.initOwner(owner);
+            alert.initModality(Modality.WINDOW_MODAL);
+        } else {
+            alert.initModality(Modality.APPLICATION_MODAL);
+        }
+
         alert.setTitle("Clothify — " + title);
         alert.setGraphic(null);
 
         DialogPane pane = alert.getDialogPane();
         pane.setGraphic(null);
-        pane.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        pane.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
         pane.setStyle("-fx-background-color: #ffffff; -fx-padding: 24; -fx-background-radius: 16; -fx-border-color: #e2e8f0; -fx-border-radius: 16; -fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.12), 16, 0, 0, 4);");
         try {
             pane.getStylesheets().add(AlertUtil.class.getResource("/modern-theme.css").toExternalForm());
@@ -138,20 +175,43 @@ public class AlertUtil {
 
         applyWindowIcon(alert);
 
+        alert.setOnHidden(e -> {
+            if (owner != null) {
+                owner.requestFocus();
+            }
+        });
+
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
 
     private static void showCustomDialog(String title, String message, String svgPath, String primaryColor, String bgColor, String borderColor, String buttonText) {
+        if (!javafx.application.Platform.isFxApplicationThread()) {
+            javafx.application.Platform.runLater(() -> showCustomDialog(title, message, svgPath, primaryColor, bgColor, borderColor, buttonText));
+            return;
+        }
+
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.initStyle(StageStyle.DECORATED);
-        alert.initModality(Modality.APPLICATION_MODAL);
+
+        Window owner = getActiveWindow();
+        if (owner != null) {
+            alert.initOwner(owner);
+            alert.initModality(Modality.WINDOW_MODAL);
+        } else {
+            alert.initModality(Modality.APPLICATION_MODAL);
+        }
+
         alert.setTitle("Clothify — " + title);
         alert.setGraphic(null);
 
         DialogPane pane = alert.getDialogPane();
         pane.setGraphic(null);
-        pane.getButtonTypes().add(ButtonType.OK);
+
+        // Include CANCEL_CLOSE type so closing via window 'X' button or Escape key dismisses cleanly without freezing
+        ButtonType closeType = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
+        pane.getButtonTypes().setAll(ButtonType.OK, closeType);
+
         pane.setStyle("-fx-background-color: #ffffff; -fx-padding: 24; -fx-background-radius: 16; -fx-border-color: #e2e8f0; -fx-border-radius: 16; -fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.12), 16, 0, 0, 4);");
         try {
             pane.getStylesheets().add(AlertUtil.class.getResource("/modern-theme.css").toExternalForm());
@@ -187,8 +247,22 @@ public class AlertUtil {
             okButton.setOnMouseExited(e -> okButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 20; -fx-padding: 8 26; -fx-cursor: hand;", primaryColor)));
         }
 
+        // Hide the dummy close button from visual layout so only our custom styled primary button is seen
+        Node closeButtonNode = pane.lookupButton(closeType);
+        if (closeButtonNode != null) {
+            closeButtonNode.setVisible(false);
+            closeButtonNode.setManaged(false);
+        }
+
         applyWindowIcon(alert);
-        alert.show();
+
+        alert.setOnHidden(e -> {
+            if (owner != null) {
+                owner.requestFocus();
+            }
+        });
+
+        alert.showAndWait();
     }
 
     private static StackPane createSvgBadge(String svgPathData, String strokeColor, String bgColor, String borderColor) {

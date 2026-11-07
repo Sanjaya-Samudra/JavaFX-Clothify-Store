@@ -46,6 +46,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Scale;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -57,6 +58,8 @@ import util.AlertUtil;
 import util.WindowUtil;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.CompletableFuture;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -179,7 +182,7 @@ public class DashboardFormController implements Initializable {
         initResponsiveLayout();
         initUserProfile();
         initLiveClock();
-        loadDatabaseMetrics();
+        refreshMetricsAsync(false);
         initCenterLogo();
         initDynamicWheel();
         initWindowCloseHandler();
@@ -194,6 +197,8 @@ public class DashboardFormController implements Initializable {
                         clockTimeline.stop();
                     }
                     UserSession.getInstance().clearSession();
+                    javafx.application.Platform.exit();
+                    System.exit(0);
                 });
             }
         });
@@ -248,6 +253,18 @@ public class DashboardFormController implements Initializable {
         lblGreeting.setText(greet + ", " + name + "!");
     }
 
+        public void refreshMetricsAsync(boolean showAlert) {
+        CompletableFuture.runAsync(() -> {
+            loadDatabaseMetrics();
+            javafx.application.Platform.runLater(() -> {
+                initDynamicWheel();
+                if (showAlert) {
+                    AlertUtil.showSuccess("Data Refreshed", "All dashboard metrics and stock indicators updated.");
+                }
+            });
+        });
+    }
+
     public void loadDatabaseMetrics() {
         try {
             // Products & Stock (Track Low Stock and Stock Out separately)
@@ -271,16 +288,49 @@ public class DashboardFormController implements Initializable {
                     }
                 }
             }
-            if (lblTotalProducts != null) lblTotalProducts.setText(totalItems + " Items");
-            if (lblLowStock != null) lblLowStock.setText(lowStockCount + " Low");
-            if (lblStockOut != null) lblStockOut.setText(stockOutCount + " Out");
 
-            // Populate the Stockout mini-list in the left boutique card
-            if (vboxStockoutList != null) {
-                final int finalStockOutCount = stockOutCount;
-                Runnable updateList = () -> {
+            // Suppliers
+            var suppliers = SupplierController.getInstance().getAllSuppliers();
+            int supCount = suppliers != null ? suppliers.size() : 0;
+
+            // Employees
+            var employees = EmployeeController.getInstance().getAllEmployees();
+            int empCount = employees != null ? employees.size() : 0;
+
+            // Orders & Revenue
+            DashboardSummary summary = ReportController.getInstance().getDashboardSummary();
+            double todaySales = 0.0;
+            int todayOrders = 0;
+            if (summary != null) {
+                todaySales = summary.getTodaySales() != null ? summary.getTodaySales() : 0.0;
+                todayOrders = summary.getTodayOrdersCount() != null ? summary.getTodayOrdersCount() : 0;
+            } else {
+                var orders = OrderController.getInstance().getAllOrders();
+                todayOrders = orders != null ? orders.size() : 0;
+            }
+
+            final int finalTotalItems = totalItems;
+            final int finalLowStockCount = lowStockCount;
+            final int finalStockOutCount = stockOutCount;
+            final int finalSupCount = supCount;
+            final int finalEmpCount = empCount;
+            final double finalTodaySales = todaySales;
+            final int finalTodayOrders = todayOrders;
+            final List<Item> finalStockOutList = new ArrayList<>(stockOutItems);
+
+            javafx.application.Platform.runLater(() -> {
+                if (lblTotalProducts != null) lblTotalProducts.setText(finalTotalItems + " Items");
+                if (lblLowStock != null) lblLowStock.setText(finalLowStockCount + " Low");
+                if (lblStockOut != null) lblStockOut.setText(finalStockOutCount + " Out");
+                if (lblTotalSuppliers != null) lblTotalSuppliers.setText(finalSupCount + " Partners");
+                if (lblTotalEmployees != null) lblTotalEmployees.setText(finalEmpCount + " Staff");
+                if (lblTodayRevenue != null) lblTodayRevenue.setText(String.format("LKR %,.2f", finalTodaySales));
+                if (lblTotalOrders != null) lblTotalOrders.setText(finalTodayOrders + " Orders");
+
+                // Populate the Stockout mini-list in the left boutique card
+                if (vboxStockoutList != null) {
                     vboxStockoutList.getChildren().clear();
-                    if (stockOutItems.isEmpty()) {
+                    if (finalStockOutList.isEmpty()) {
                         HBox emptyRow = new HBox(6);
                         emptyRow.setAlignment(Pos.CENTER_LEFT);
                         emptyRow.setStyle("-fx-padding: 6 8; -fx-background-color: #ecfdf5; -fx-background-radius: 6; -fx-border-color: #a7f3d0; -fx-border-radius: 6;");
@@ -299,7 +349,7 @@ public class DashboardFormController implements Initializable {
                             lblStockoutListBadge.setStyle("-fx-background-color: #fef2f2; -fx-text-fill: #dc2626; -fx-padding: 1 6; -fx-background-radius: 8; -fx-font-size: 9px; -fx-font-weight: bold;");
                         }
 
-                        for (Item it : stockOutItems) {
+                        for (Item it : finalStockOutList) {
                             HBox row = new HBox(6);
                             row.setAlignment(Pos.CENTER_LEFT);
                             row.setStyle("-fx-background-color: #ffffff; -fx-padding: 4 6; -fx-background-radius: 6; -fx-border-color: #fecaca; -fx-border-radius: 6;");
@@ -320,40 +370,8 @@ public class DashboardFormController implements Initializable {
                             vboxStockoutList.getChildren().add(row);
                         }
                     }
-                };
-
-                if (javafx.application.Platform.isFxApplicationThread()) {
-                    updateList.run();
-                } else {
-                    javafx.application.Platform.runLater(updateList);
                 }
-            }
-
-            // Suppliers
-            var suppliers = SupplierController.getInstance().getAllSuppliers();
-            int supCount = suppliers != null ? suppliers.size() : 0;
-            if (lblTotalSuppliers != null) lblTotalSuppliers.setText(supCount + " Partners");
-
-            // Employees
-            var employees = EmployeeController.getInstance().getAllEmployees();
-            int empCount = employees != null ? employees.size() : 0;
-            if (lblTotalEmployees != null) lblTotalEmployees.setText(empCount + " Staff");
-
-            // Orders & Revenue
-            DashboardSummary summary = ReportController.getInstance().getDashboardSummary();
-            if (summary != null) {
-                if (lblTodayRevenue != null && summary.getTodaySales() != null) {
-                    lblTodayRevenue.setText(String.format("LKR %,.2f", summary.getTodaySales()));
-                }
-                if (lblTotalOrders != null && summary.getTodayOrdersCount() != null) {
-                    lblTotalOrders.setText(summary.getTodayOrdersCount() + " Orders");
-                }
-            } else {
-                var orders = OrderController.getInstance().getAllOrders();
-                int orderCount = orders != null ? orders.size() : 0;
-                if (lblTotalOrders != null) lblTotalOrders.setText(orderCount + " Orders");
-                if (lblTodayRevenue != null) lblTodayRevenue.setText("LKR 0.00");
-            }
+            });
         } catch (Exception e) {
             System.err.println("Metric load note: " + e.getMessage());
         }
@@ -361,9 +379,7 @@ public class DashboardFormController implements Initializable {
 
     @FXML
     void btnRefreshStats(ActionEvent event) {
-        loadDatabaseMetrics();
-        initDynamicWheel();
-        AlertUtil.showSuccess("Data Refreshed", "All dashboard metrics and stock indicators updated.");
+        refreshMetricsAsync(true);
     }
 
     private void initCenterLogo() {
@@ -957,7 +973,7 @@ public class DashboardFormController implements Initializable {
         openModuleStage("/view/report_view.fxml", "Clothify - Financial Analytics & Inventory Reports", 1080, 700);
     }
 
-    private void openModuleStage(String fxmlPath, String windowTitle, double width, double height) {
+        private void openModuleStage(String fxmlPath, String windowTitle, double width, double height) {
         try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
@@ -965,14 +981,32 @@ public class DashboardFormController implements Initializable {
             stage.setScene(scene);
             stage.setTitle(windowTitle);
 
+            try {
+                InputStream is = getClass().getResourceAsStream("/Images/logo-background-removed-nav.png");
+                if (is != null) {
+                    stage.getIcons().add(new Image(is));
+                }
+            } catch (Exception ignored) {}
+
             WindowUtil.centerInVisualBounds(stage, width, height);
 
-            stage.initModality(Modality.APPLICATION_MODAL);
+            Stage owner = null;
+            if (rootPane != null && rootPane.getScene() != null && rootPane.getScene().getWindow() instanceof Stage) {
+                owner = (Stage) rootPane.getScene().getWindow();
+                stage.initOwner(owner);
+                stage.initModality(Modality.WINDOW_MODAL);
+            } else {
+                stage.initModality(Modality.APPLICATION_MODAL);
+            }
+
             stage.showAndWait();
 
-            // Refresh metrics and dynamic wheel after module closes
-            loadDatabaseMetrics();
-            initDynamicWheel();
+            if (owner != null) {
+                owner.requestFocus();
+            }
+
+            // Refresh metrics and dynamic wheel asynchronously after module closes
+            refreshMetricsAsync(false);
         } catch (IOException e) {
             e.printStackTrace();
             AlertUtil.showError("Module Error", "Could not load module [" + fxmlPath + "]: " + e.getMessage());

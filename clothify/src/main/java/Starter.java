@@ -16,6 +16,9 @@ public class Starter extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        // Prevent JavaFX runtime from terminating if a secondary window or popup closes
+        javafx.application.Platform.setImplicitExit(false);
+
         // Automatically initialize database tables and seed accounts
         try {
             DBInitializer.initializeDatabase();
