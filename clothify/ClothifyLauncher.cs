@@ -31,7 +31,7 @@ namespace Clothify
                     return;
                 }
 
-                string javaw = FindJavaw();
+                string javaw = FindJavaw(exeDir);
                 if (string.IsNullOrEmpty(javaw))
                 {
                     DialogResult res = MessageBox.Show(
@@ -42,7 +42,15 @@ namespace Clothify
 
                     if (res == DialogResult.Yes)
                     {
-                        Process.Start("https://adoptium.net/temurin/releases/?version=11");
+                        try
+                        {
+                            ProcessStartInfo urlPsi = new ProcessStartInfo("https://adoptium.net/temurin/releases/?version=11")
+                            {
+                                UseShellExecute = true
+                            };
+                            Process.Start(urlPsi);
+                        }
+                        catch {}
                     }
                     return;
                 }
@@ -63,8 +71,23 @@ namespace Clothify
             }
         }
 
-        static string FindJavaw()
+        static string FindJavaw(string exeDir)
         {
+            // 0. Check bundled JRE / runtime in application directory first!
+            string[] localJrePaths = new string[]
+            {
+                Path.Combine(exeDir, "jre", "bin", "javaw.exe"),
+                Path.Combine(exeDir, "runtime", "bin", "javaw.exe")
+            };
+
+            foreach (string candidate in localJrePaths)
+            {
+                if (File.Exists(candidate))
+                {
+                    return candidate;
+                }
+            }
+
             // 1. Try PATH
             string pathEnv = Environment.GetEnvironmentVariable("PATH") ?? "";
             string[] paths = pathEnv.Split(Path.PathSeparator);

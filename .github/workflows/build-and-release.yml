@@ -34,6 +34,13 @@ jobs:
         run: |
           & C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /out:clothify.exe /win32icon:src\main\resources\Images\clothify.ico ClothifyLauncher.cs
 
+      - name: Build Embedded JRE with jlink
+        run: |
+          $jlink = "$env:JAVA_HOME\bin\jlink.exe"
+          $jmods = "$env:JAVA_HOME\jmods"
+          $modules = "java.base,java.desktop,java.sql,java.naming,java.management,java.xml,java.logging,jdk.unsupported,jdk.crypto.ec,jdk.crypto.cryptoki,java.security.sasl,java.security.jgss"
+          & $jlink --module-path $jmods --add-modules $modules --strip-debug --no-man-pages --no-header-files --compress=2 --output dist\jre
+
       - name: Prepare Release Bundle
         run: |
           New-Item -ItemType Directory -Force -Path dist\config
@@ -50,8 +57,8 @@ jobs:
 
           HOW TO RUN:
           1. Double-click 'clothify.exe' to launch directly!
-          2. Open 'config/database.properties' to configure your database host, user, and password.
-          3. Or double-click 'clothify.vbs' or 'run.bat'.
+          2. No Java installation needed (Embedded JRE included in 'jre').
+          3. Pre-configured with live cloud database.
 
           Default Seed Accounts:
           - Admin:   admin@clothify.com   / admin123
